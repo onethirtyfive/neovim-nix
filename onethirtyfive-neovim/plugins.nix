@@ -48,7 +48,7 @@ in (with vimPlugins; [
       python
       ruby
       rust
-      terraform
+      # terraform
       toml
       tree-sitter-tsx
       typescript

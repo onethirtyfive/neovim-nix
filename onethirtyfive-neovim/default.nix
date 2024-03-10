@@ -52,8 +52,8 @@ in pkgs.writeShellApplication {
     nmap
     ripgrep
     taplo
-    terraform
-    terraform-ls
+    # terraform
+    # terraform-ls
     texlab
     taplo
   ]
