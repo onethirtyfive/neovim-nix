@@ -117,7 +117,7 @@ configure_lsp('nil_ls')
 configure_lsp('texlab')
 -- configure_lsp('terraformls')
 configure_lsp('tsserver')
-configure_lsp('standardrb')
+-- configure_lsp('standardrb')
 configure_lsp('taplo')
 configure_lsp('jsonls')
 
