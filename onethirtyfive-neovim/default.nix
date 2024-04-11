@@ -7,11 +7,11 @@ let
     withNodeJs = true;
 
     extraPython3Packages = (ps: with ps; [
-      black
+      # black
       pylint
 
-      python-lsp-server
-      python-lsp-black
+      # python-lsp-server
+      # python-lsp-black
       pylsp-mypy
       pynvim
 
