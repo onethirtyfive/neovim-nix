@@ -75,7 +75,6 @@ local on_attach = function(_, bufnr)
   end
   nmap('K', show_documentation, '[K] Hover Documentation')
   nmap('<leader>k', vim.lsp.buf.signature_help, '[k] signature documentation')
-  nmap('<leader>H', rt.hover_actions.hover_actions, '[H]over actions')
 
   -- Lesser used LSP functionality
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[w]orkspace [a]dd folder')
