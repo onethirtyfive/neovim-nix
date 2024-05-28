@@ -33,6 +33,7 @@ let
         sources = [
           ./init.lua
           ./config/crates.lua
+          ./config/gp.lua
           ./config/lsp.lua
           ./config/lualine.lua
           ./config/treesitter.lua
@@ -50,6 +51,7 @@ in pkgs.writeShellApplication {
     marksman
     nil
     nmap
+    (sox.override { enableLame = true; })
     ripgrep
     taplo
     # terraform

@@ -11,8 +11,12 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
+
+    # gp.nvim
+    plugin-gp-nvim.url = "github:Robitx/gp.nvim";
+    plugin-gp-nvim.flake = false;
   };
-  outputs = { self, nixpkgs, neovim, flake-utils }:
+  outputs = { self, nixpkgs, neovim, flake-utils, plugin-gp-nvim }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs =
@@ -21,6 +25,10 @@
               (prev: final: {
                 neovim = neovim.packages.${prev.system}.neovim;
                 vimPlugins = final.vimPlugins // {
+                  gp = final.vimUtils.buildVimPlugin {
+                    name = "gp-nvim";
+                    src = plugin-gp-nvim;
+                  };
                 };
               })
               (prev: final: {
