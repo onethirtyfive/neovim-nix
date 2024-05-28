@@ -11,6 +11,7 @@ require('lualine').setup {
   options = {
     -- theme = custom_solarized_dark,
     -- theme = custom_theme,
+    icons_enabled = true,
     component_separators = '|',
     section_separators = { left = '', right = '' },
   },
@@ -34,6 +35,7 @@ require('lualine').setup {
       },
       'progress',
     },
+    lualine_x = { 'copilot' ,'encoding', 'fileformat', 'filetype' },
     lualine_y = {}
   },
   inactive_sections = {

@@ -128,16 +128,9 @@ require('gitsigns').setup{
   }
 }
 
--- not using copilot for now
--- require("copilot").setup({
---   suggestion = { enabled = false },
---   panel = { enabled = false },
--- })
-
 local lspkind = require("lspkind")
 lspkind.init({
   symbol_map = {
-    -- Copilot = "",
   },
 })
 
@@ -164,8 +157,6 @@ vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'Window left
 vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'Window right' })
 vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'Window down' })
 vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'Window up' })
-
--- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
 vim.api.nvim_command([[
   silent! colorscheme carbonfox

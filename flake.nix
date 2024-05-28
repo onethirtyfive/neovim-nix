@@ -15,8 +15,12 @@
     # gp.nvim
     plugin-gp-nvim.url = "github:Robitx/gp.nvim";
     plugin-gp-nvim.flake = false;
+
+    # copilot-lualine.nvim
+    plugin-copilot-lualine-nvim.url = "github:AndreM222/copilot-lualine";
+    plugin-copilot-lualine-nvim.flake = false;
   };
-  outputs = { self, nixpkgs, neovim, flake-utils, plugin-gp-nvim }:
+  outputs = { self, nixpkgs, neovim, flake-utils, plugin-gp-nvim, plugin-copilot-lualine-nvim }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs =
@@ -25,6 +29,10 @@
               (prev: final: {
                 neovim = neovim.packages.${prev.system}.neovim;
                 vimPlugins = final.vimPlugins // {
+                  copilot-lualine = final.vimUtils.buildVimPlugin {
+                    name = "copilot-lualine";
+                    src = plugin-copilot-lualine-nvim;
+                  };
                   gp = final.vimUtils.buildVimPlugin {
                     name = "gp-nvim";
                     src = plugin-gp-nvim;
