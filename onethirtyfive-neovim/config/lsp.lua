@@ -113,27 +113,13 @@ configure_lsp('html')
 configure_lsp('cssls')
 configure_lsp('marksman')
 configure_lsp('nil_ls')
+configure_lsp('ruff')
 configure_lsp('texlab')
 -- configure_lsp('terraformls')
 configure_lsp('tsserver')
 -- configure_lsp('standardrb')
 configure_lsp('taplo')
 configure_lsp('jsonls')
-
-require'lspconfig'.pylsp.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"python"},
-  settings = {
-    pylsp = {
-      plugins = {
-        black = { enabled = true },
-        pylint = { enabled = true },
-        pyls_mypy = { enabled = true },
-      }
-    }
-  }
-}
 
 require('crates').setup()
 
