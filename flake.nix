@@ -10,6 +10,8 @@
     gp-nvim.url = "github:Robitx/gp.nvim";
     gp-nvim.flake = false;
 
+    fidget-nvim.url = "github:j-hui/fidget.nvim";
+    fidget-nvim.flake = false;
     fugitive.url = "github:tpope/vim-fugitive";
     fugitive.flake = false;
     gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
@@ -52,6 +54,7 @@
     neovim-nightly-overlay,
     nixpkgs,
     copilot-lualine-nvim,
+    fidget-nvim,
     fugitive,
     gitsigns-nvim,
     gp-nvim,
@@ -89,6 +92,9 @@
                 name = "copilot-lualine";
                 src = copilot-lualine-nvim;
               };
+              fidget-nvim = final.vimPlugins.fidget-nvim.overrideAttrs (prev: prev // {
+                src = fidget-nvim;
+              });
               fugitive = final.vimPlugins.fugitive.overrideAttrs (prev: prev // {
                 src = fugitive;
               });
