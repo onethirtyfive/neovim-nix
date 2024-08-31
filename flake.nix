@@ -12,6 +12,8 @@
 
     fugitive.url = "github:tpope/vim-fugitive";
     fugitive.flake = false;
+    gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
+    gitsigns-nvim.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
 
@@ -24,6 +26,7 @@
     nixpkgs,
     copilot-lualine-nvim,
     fugitive,
+    gitsigns-nvim,
     gp-nvim,
     project-nvim,
     vim-tmux-navigator,
@@ -47,6 +50,9 @@
               };
               fugitive = final.vimPlugins.fugitive.overrideAttrs (prev: prev // {
                 src = fugitive;
+              });
+              gitsigns-nvim = final.vimPlugins.gitsigns-nvim.overrideAttrs (prev: prev // {
+                src = gitsigns-nvim;
               });
               gp = final.vimUtils.buildVimPlugin {
                 name = "gp-nvim";
