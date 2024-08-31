@@ -296,6 +296,22 @@
         "type": "github"
       }
     },
+    "nvim-web-devicons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722734411,
+        "narHash": "sha256-TeWMlfNTA5+tiPq6D2TVWjdfJVr3FOwpqUDU8kfFZ8E=",
+        "owner": "nvim-tree",
+        "repo": "nvim-web-devicons",
+        "rev": "3722e3d1fb5fe1896a104eb489e8f8651260b520",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-tree",
+        "repo": "nvim-web-devicons",
+        "type": "github"
+      }
+    },
     "project-nvim": {
       "flake": false,
       "locked": {
@@ -325,6 +341,7 @@
           "nixpkgs"
         ],
         "nvim-tree-lua": "nvim-tree-lua",
+        "nvim-web-devicons": "nvim-web-devicons",
         "project-nvim": "project-nvim",
         "vim-tmux-navigator": "vim-tmux-navigator"
       }
