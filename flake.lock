@@ -344,6 +344,7 @@
         "nvim-web-devicons": "nvim-web-devicons",
         "project-nvim": "project-nvim",
         "telescope-fzf-native-nvim": "telescope-fzf-native-nvim",
+        "telescope-live-grep-args-nvim": "telescope-live-grep-args-nvim",
         "telescope-nvim": "telescope-nvim",
         "vim-tmux-navigator": "vim-tmux-navigator"
       }
@@ -361,6 +362,22 @@
       "original": {
         "owner": "nvim-telescope",
         "repo": "telescope-fzf-native.nvim",
+        "type": "github"
+      }
+    },
+    "telescope-live-grep-args-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722155392,
+        "narHash": "sha256-KpTS3lt9QjPndNJSLnOHCb0fS9zolT3mzQMhK6aP5v0=",
+        "owner": "nvim-telescope",
+        "repo": "telescope-live-grep-args.nvim",
+        "rev": "649b662a8f476fd2c0289570764459e95ebaa3f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-telescope",
+        "repo": "telescope-live-grep-args.nvim",
         "type": "github"
       }
     },

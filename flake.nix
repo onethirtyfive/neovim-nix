@@ -24,6 +24,8 @@
     project-nvim.flake = false;
     telescope-fzf-native-nvim.url = "github:nvim-telescope/telescope-fzf-native.nvim";
     telescope-fzf-native-nvim.flake = false;
+    telescope-live-grep-args-nvim.url = "github:nvim-telescope/telescope-live-grep-args.nvim";
+    telescope-live-grep-args-nvim.flake = false;
     telescope-nvim.url = "github:nvim-telescope/telescope.nvim";
     telescope-nvim.flake = false;
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
@@ -42,6 +44,7 @@
     nvim-web-devicons,
     project-nvim,
     telescope-fzf-native-nvim,
+    telescope-live-grep-args-nvim,
     telescope-nvim,
     vim-tmux-navigator,
   }:
@@ -87,6 +90,9 @@
               });
               telescope-fzf-native-nvim = final.vimPlugins.telescope-fzf-native-nvim.overrideAttrs (prev: prev // {
                 src = telescope-fzf-native-nvim;
+              });
+              telescope-live-grep-args-nvim = final.vimPlugins.telescope-live-grep-args-nvim.overrideAttrs (prev: prev // {
+                src = telescope-live-grep-args-nvim;
               });
               telescope-nvim = final.vimPlugins.telescope-nvim.overrideAttrs (prev: prev // {
                 src = telescope-nvim;
