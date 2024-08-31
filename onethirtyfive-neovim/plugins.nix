@@ -104,7 +104,7 @@ in (with vimPlugins; [
   # lsp: utility
   gp
   copilot-lua
-  copilot-lualine
+  copilot-lualine-nvim
   lsp_signature-nvim
   lspkind-nvim
   luasnip

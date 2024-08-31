@@ -94,8 +94,8 @@
               copilot-lua = final.vimPlugins.copilot-lua.overrideAttrs (prev: prev // {
                 src = copilot-lua;
               });
-              copilot-lualine = final.vimUtils.buildVimPlugin {
-                name = "copilot-lualine";
+              copilot-lualine-nvim = final.vimUtils.buildVimPlugin {
+                name = "copilot-lualine-nvim";
                 src = copilot-lualine-nvim;
               };
               fidget-nvim = final.vimPlugins.fidget-nvim.overrideAttrs (prev: prev // {
