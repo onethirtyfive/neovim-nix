@@ -346,7 +346,8 @@
         "telescope-fzf-native-nvim": "telescope-fzf-native-nvim",
         "telescope-live-grep-args-nvim": "telescope-live-grep-args-nvim",
         "telescope-nvim": "telescope-nvim",
-        "vim-tmux-navigator": "vim-tmux-navigator"
+        "vim-tmux-navigator": "vim-tmux-navigator",
+        "which-key-nvim": "which-key-nvim"
       }
     },
     "telescope-fzf-native-nvim": {
@@ -410,6 +411,22 @@
       "original": {
         "owner": "christoomey",
         "repo": "vim-tmux-navigator",
+        "type": "github"
+      }
+    },
+    "which-key-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725088492,
+        "narHash": "sha256-FY0KM0F2keMCqB5QhwfGS4w2wQOOeCXgZEa3U7Q1Bek=",
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "rev": "bfec3d6bc0a9b0b2cb11644642f78c2c3915eef0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "which-key.nvim",
         "type": "github"
       }
     }

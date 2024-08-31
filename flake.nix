@@ -30,6 +30,8 @@
     telescope-nvim.flake = false;
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
     vim-tmux-navigator.flake = false;
+    which-key-nvim.url = "github:folke/which-key.nvim";
+    which-key-nvim.flake = false;
   };
   outputs = {
     self,
@@ -47,6 +49,7 @@
     telescope-live-grep-args-nvim,
     telescope-nvim,
     vim-tmux-navigator,
+    which-key-nvim
   }:
   let
     systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
@@ -99,6 +102,9 @@
               });
               vim-tmux-navigator = final.vimPlugins.vim-tmux-navigator.overrideAttrs (prev: prev // {
                 src = vim-tmux-navigator;
+              });
+              which-key-nvim = final.vimPlugins.which-key-nvim.overrideAttrs (prev: prev // {
+                src = which-key-nvim;
               });
             };
           })

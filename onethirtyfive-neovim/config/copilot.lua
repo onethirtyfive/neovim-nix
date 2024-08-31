@@ -18,27 +18,22 @@ require("copilot").setup({
   },
 })
 
-vim.cmd([[
-    augroup CopilotLuaRefresh
-        autocmd!
-        autocmd InsertEnter * lua require('copilot.suggestion').next()
-    augroup END
-]])
+-- vim.cmd([[
+--     augroup CopilotLuaRefresh
+--         autocmd!
+--         autocmd InsertEnter * lua require('copilot.suggestion').next()
+--     augroup END
+-- ]])
 
-require("which-key").register({
-  ["<C-b>"] = {
-      j = { "<cmd>Copilot suggestion next<cr>", "Next Copilot" },
-      k = { "<cmd>Copilot suggestion prev<cr>", "Prev Copilot" },
-      l = { "<cmd>Copilot suggestion accept_line<cr>", "Accept Line" },
-      w = { "<cmd>Copilot suggestion accept_words<cr>", "Accept Word" },
-      ["<C-b>"] = { "<cmd>Copilot suggestion accept<cr>", "Accept Suggestion" },
-      d = { "<cmd>Copilot suggestion dismiss<cr>", "Dismiss Copilot" },
-  }
-}, {
-    mode = "i", -- INSERT mode
-    prefix = "",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = true,
+wk = require("which-key")
+wk.add({
+  {
+    mode = { "i" },
+    { "<C-l>;", "<cmd>Copilot suggestion accept<cr>", desc = "Accept Suggestion", nowait = true, remap = false },
+    { "<C-l>d", "<cmd>Copilot suggestion dismiss<cr>", desc = "Dismiss Copilot", nowait = true, remap = false },
+    { "<C-l>j", "<cmd>Copilot suggestion next<cr>", desc = "Next Copilot", nowait = true, remap = false },
+    { "<C-l>k", "<cmd>Copilot suggestion prev<cr>", desc = "Prev Copilot", nowait = true, remap = false },
+    { "<C-l>l", "<cmd>Copilot suggestion accept_line<cr>", desc = "Accept Line", nowait = true, remap = false },
+    { "<C-l>w", "<cmd>Copilot suggestion accept_words<cr>", desc = "Accept Word", nowait = true, remap = false },
+  },
 })

@@ -86,9 +86,13 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { noremap = true, de
 require('fidget').setup{}
 require('nvim-web-devicons').setup{}
 require('which-key').setup{
-  window = {
+  win = {
     border = "single",
-  }
+  },
+  triggers = {
+    { "<auto>", mode = "nxso" },
+    { "<auto>", mode = "i" },
+  },
 }
 require('Comment').setup{}
 require('nvim-ts-autotag').setup{}
