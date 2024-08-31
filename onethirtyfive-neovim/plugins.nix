@@ -11,7 +11,6 @@ in (with vimPlugins; [
   # scm
   fugitive # less used
   gitsigns-nvim
-  vim-rhubarb
 
   # chrome
   lualine-nvim
