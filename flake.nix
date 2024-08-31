@@ -20,6 +20,8 @@
     nightfox-nvim.flake = false;
     nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
     nvim-tree-lua.flake = false;
+    nvim-treesitter-textobjects.url = "github:nvim-treesitter/nvim-treesitter-textobjects";
+    nvim-treesitter-textobjects.flake = false;
     nvim-web-devicons.url = "github:nvim-tree/nvim-web-devicons";
     nvim-web-devicons.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
@@ -46,6 +48,7 @@
     lualine-nvim,
     nightfox-nvim,
     nvim-tree-lua,
+    nvim-treesitter-textobjects,
     nvim-web-devicons,
     project-nvim,
     telescope-fzf-native-nvim,
@@ -89,6 +92,9 @@
               });
               nvim-tree-lua = final.vimPlugins.nvim-tree-lua.overrideAttrs (prev: prev // {
                 src = nvim-tree-lua;
+              });
+              nvim-treesitter-textobjects = final.vimPlugins.nvim-treesitter-textobjects.overrideAttrs (prev: prev // {
+                src = nvim-treesitter-textobjects;
               });
               nvim-web-devicons = final.vimPlugins.nvim-web-devicons.overrideAttrs (prev: prev // {
                 src = nvim-web-devicons;

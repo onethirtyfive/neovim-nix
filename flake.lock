@@ -312,6 +312,22 @@
         "type": "github"
       }
     },
+    "nvim-treesitter-textobjects": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724994459,
+        "narHash": "sha256-k8awnw0QETnYzDH6JeGzmNx/kovFfprCYZm/ybULPtw=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-textobjects",
+        "rev": "3a3c6244553f13fdd92d312c82722b57ce6c4bec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-textobjects",
+        "type": "github"
+      }
+    },
     "nvim-web-devicons": {
       "flake": false,
       "locked": {
@@ -358,6 +374,7 @@
           "nixpkgs"
         ],
         "nvim-tree-lua": "nvim-tree-lua",
+        "nvim-treesitter-textobjects": "nvim-treesitter-textobjects",
         "nvim-web-devicons": "nvim-web-devicons",
         "project-nvim": "project-nvim",
         "telescope-fzf-native-nvim": "telescope-fzf-native-nvim",
