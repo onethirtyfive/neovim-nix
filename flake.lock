@@ -343,7 +343,41 @@
         "nvim-tree-lua": "nvim-tree-lua",
         "nvim-web-devicons": "nvim-web-devicons",
         "project-nvim": "project-nvim",
+        "telescope-fzf-native-nvim": "telescope-fzf-native-nvim",
+        "telescope-nvim": "telescope-nvim",
         "vim-tmux-navigator": "vim-tmux-navigator"
+      }
+    },
+    "telescope-fzf-native-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719928246,
+        "narHash": "sha256-GEhPf1f0jkEuDlHNuxVko0ChvuF/zoQroLNUlk8N5EA=",
+        "owner": "nvim-telescope",
+        "repo": "telescope-fzf-native.nvim",
+        "rev": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-telescope",
+        "repo": "telescope-fzf-native.nvim",
+        "type": "github"
+      }
+    },
+    "telescope-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723686624,
+        "narHash": "sha256-rNzfnORvbKoglt20i/rKmlkysPUBlB89F6dRKgB5MKU=",
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "rev": "5972437de807c3bc101565175da66a1aa4f8707a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "type": "github"
       }
     },
     "vim-tmux-navigator": {

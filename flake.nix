@@ -22,6 +22,10 @@
     nvim-web-devicons.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
+    telescope-fzf-native-nvim.url = "github:nvim-telescope/telescope-fzf-native.nvim";
+    telescope-fzf-native-nvim.flake = false;
+    telescope-nvim.url = "github:nvim-telescope/telescope.nvim";
+    telescope-nvim.flake = false;
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
     vim-tmux-navigator.flake = false;
   };
@@ -37,6 +41,8 @@
     nvim-tree-lua,
     nvim-web-devicons,
     project-nvim,
+    telescope-fzf-native-nvim,
+    telescope-nvim,
     vim-tmux-navigator,
   }:
   let
@@ -78,6 +84,12 @@
               project-nvim = final.vimPlugins.project-nvim.overrideAttrs (prev: prev // {
                 src = project-nvim;
                 patches = [ ./patches/project-nvim/fix-get_clients.patch ];
+              });
+              telescope-fzf-native-nvim = final.vimPlugins.telescope-fzf-native-nvim.overrideAttrs (prev: prev // {
+                src = telescope-fzf-native-nvim;
+              });
+              telescope-nvim = final.vimPlugins.telescope-nvim.overrideAttrs (prev: prev // {
+                src = telescope-nvim;
               });
               vim-tmux-navigator = final.vimPlugins.vim-tmux-navigator.overrideAttrs (prev: prev // {
                 src = vim-tmux-navigator;
