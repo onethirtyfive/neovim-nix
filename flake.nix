@@ -26,6 +26,8 @@
     nvim-ts-autotag.flake = false;
     nvim-web-devicons.url = "github:nvim-tree/nvim-web-devicons";
     nvim-web-devicons.flake = false;
+    plenary-nvim.url = "github:nvim-lua/plenary.nvim";
+    plenary-nvim.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
     telescope-fzf-native-nvim.url = "github:nvim-telescope/telescope-fzf-native.nvim";
@@ -53,6 +55,7 @@
     nvim-treesitter-textobjects,
     nvim-ts-autotag,
     nvim-web-devicons,
+    plenary-nvim,
     project-nvim,
     telescope-fzf-native-nvim,
     telescope-live-grep-args-nvim,
@@ -98,6 +101,9 @@
               });
               nvim-treesitter-textobjects = final.vimPlugins.nvim-treesitter-textobjects.overrideAttrs (prev: prev // {
                 src = nvim-treesitter-textobjects;
+              });
+              plenary-nvim = final.vimPlugins.plenary-nvim.overrideAttrs (prev: prev // {
+                src = plenary-nvim;
               });
               nvim-ts-autotag = final.vimPlugins.nvim-ts-autotag.overrideAttrs (prev: prev // {
                 src = nvim-ts-autotag;
