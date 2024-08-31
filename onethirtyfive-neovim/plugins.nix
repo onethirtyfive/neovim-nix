@@ -26,30 +26,68 @@ in (with vimPlugins; [
 
   # lang
   (nvim-treesitter.withPlugins (
-    plugins: with plugins; [
+    plugins: (with plugins; [
+      awk
       bash
       c
+      cpp
       css
+      csv
+      dhall
+      dockerfile
       diff
+      elixir
+      git-config
       git-rebase
       gitattributes
       gitcommit
       gitignore
+      go
+      gomod
+      gpg
+      graphql
       haskell
       hcl
+      helm
       html
+      http
+      ini
+      java
       javascript
+      jq
+      jsdoc
+      json
+      llvm
       lua
+      luadoc
+      make
+      markdown
+      markdown-inline
+      meson
+      nginx
       nix
+      odin
+      passwd
+      pem
+      proto
       python
+      readline
+      regex
+      robots
       ruby
       rust
-      # terraform
+      scss
+      ssh-config
+      sql
+      swift
+      terraform
+      tmux
       toml
       tree-sitter-tsx
       typescript
       tree-sitter-yaml
-    ]
+      zig
+    ])
   ))
   nvim-treesitter-textobjects
   nvim-ts-autotag
