@@ -7,7 +7,6 @@ in (with vimPlugins; [
 
   # projects
   project-nvim
-  telescope-project-nvim
 
   # scm
   fugitive

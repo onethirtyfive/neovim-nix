@@ -12,6 +12,7 @@
 
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
+
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
     vim-tmux-navigator.flake = false;
   };
