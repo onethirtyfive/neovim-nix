@@ -240,7 +240,24 @@
         "nixpkgs": [
           "neovim-nightly-overlay",
           "nixpkgs"
-        ]
+        ],
+        "vim-tmux-navigator": "vim-tmux-navigator"
+      }
+    },
+    "vim-tmux-navigator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716740807,
+        "narHash": "sha256-o39bbuD0rqTrvkDfagOBG9FeXPj/2GMS2OKYTaH4mU0=",
+        "owner": "christoomey",
+        "repo": "vim-tmux-navigator",
+        "rev": "5b3c701686fb4e6629c100ed32e827edf8dad01e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "christoomey",
+        "repo": "vim-tmux-navigator",
+        "type": "github"
       }
     }
   },

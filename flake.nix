@@ -9,6 +9,9 @@
     copilot-lualine-nvim.flake = false;
     gp-nvim.url = "github:Robitx/gp.nvim";
     gp-nvim.flake = false;
+
+    vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
+    vim-tmux-navigator.flake = false;
   };
   outputs = {
     self,
@@ -16,6 +19,7 @@
     nixpkgs,
     copilot-lualine-nvim,
     gp-nvim,
+    vim-tmux-navigator,
   }:
   let
     systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
@@ -38,6 +42,9 @@
                 name = "gp-nvim";
                 src = gp-nvim;
               };
+              vim-tmux-navigator = final.vimPlugins.vim-tmux-navigator.overrideAttrs (prev: prev // {
+                src = vim-tmux-navigator;
+              });
             };
           })
           (prev: final: {
