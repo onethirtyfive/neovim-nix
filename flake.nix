@@ -1,9 +1,8 @@
 {
   description = "My own Neovim flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    neovim.url = "github:neovim/neovim?dir=contrib";
-    neovim.inputs.nixpkgs.follows = "nixpkgs";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixpkgs.follows = "neovim-nightly-overlay/nixpkgs";
 
     # nvim plugin sources:
     copilot-lualine-nvim.url = "github:AndreM222/copilot-lualine";
@@ -13,8 +12,8 @@
   };
   outputs = {
     self,
+    neovim-nightly-overlay,
     nixpkgs,
-    neovim,
     copilot-lualine-nvim,
     gp-nvim,
   }:
@@ -26,18 +25,20 @@
       system:
       let
         overlays = [
+          neovim-nightly-overlay.overlays.default
           (prev: final: {
-            neovim = neovim.packages.${prev.system}.neovim;
-            vimPlugins = final.vimPlugins // {
-              copilot-lualine = final.vimUtils.buildVimPlugin {
+            neovim = neovim-nightly-overlay.packages.${prev.system}.default;
+
+            vimPlugins = final.vimPlugins // (with prev.vimUtils; {
+              copilot-lualine = buildVimPlugin {
                 name = "copilot-lualine";
                 src = copilot-lualine-nvim;
               };
-              gp = final.vimUtils.buildVimPlugin {
+              gp = buildVimPlugin {
                 name = "gp-nvim";
                 src = gp-nvim;
               };
-            };
+            });
           })
           (prev: final: {
             onethirtyfive-neovim = import ./onethirtyfive-neovim { pkgs = final; };
