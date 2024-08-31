@@ -280,6 +280,22 @@
         "type": "github"
       }
     },
+    "nvim-tree-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724556208,
+        "narHash": "sha256-/1qj0L/d/iZk+zn0JIUkdHSYp2etciMo35fhV28J5Kw=",
+        "owner": "nvim-tree",
+        "repo": "nvim-tree.lua",
+        "rev": "d43ab67d0eb4317961c5e9d15fffe908519debe0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-tree",
+        "repo": "nvim-tree.lua",
+        "type": "github"
+      }
+    },
     "project-nvim": {
       "flake": false,
       "locked": {
@@ -308,6 +324,7 @@
           "neovim-nightly-overlay",
           "nixpkgs"
         ],
+        "nvim-tree-lua": "nvim-tree-lua",
         "project-nvim": "project-nvim",
         "vim-tmux-navigator": "vim-tmux-navigator"
       }

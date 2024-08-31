@@ -16,6 +16,8 @@
     gitsigns-nvim.flake = false;
     lualine-nvim.url = "github:nvim-lualine/lualine.nvim";
     lualine-nvim.flake = false;
+    nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
+    nvim-tree-lua.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
@@ -30,6 +32,7 @@
     gitsigns-nvim,
     gp-nvim,
     lualine-nvim,
+    nvim-tree-lua,
     project-nvim,
     vim-tmux-navigator,
   }:
@@ -62,6 +65,9 @@
               };
               lualine-nvim = final.vimPlugins.lualine-nvim.overrideAttrs (prev: prev // {
                 src = lualine-nvim;
+              });
+              nvim-tree-lua = final.vimPlugins.nvim-tree-lua.overrideAttrs (prev: prev // {
+                src = nvim-tree-lua;
               });
               project-nvim = final.vimPlugins.project-nvim.overrideAttrs (prev: prev // {
                 src = project-nvim;
