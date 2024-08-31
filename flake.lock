@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "copilot-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718412968,
+        "narHash": "sha256-HC1QZlqEg+RBz/8kjLadafc06UoMAjhh0UO/BWQGMY8=",
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "rev": "86537b286f18783f8b67bccd78a4ef4345679625",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "type": "github"
+      }
+    },
     "copilot-lualine-nvim": {
       "flake": false,
       "locked": {
@@ -1183,6 +1199,7 @@
     },
     "root": {
       "inputs": {
+        "copilot-lua": "copilot-lua",
         "copilot-lualine-nvim": "copilot-lualine-nvim",
         "fidget-nvim": "fidget-nvim",
         "fugitive": "fugitive",
