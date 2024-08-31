@@ -29,16 +29,16 @@
           (prev: final: {
             neovim = neovim-nightly-overlay.packages.${prev.system}.default;
 
-            vimPlugins = final.vimPlugins // (with prev.vimUtils; {
-              copilot-lualine = buildVimPlugin {
+            vimPlugins = final.vimPlugins // {
+              copilot-lualine = final.vimUtils.buildVimPlugin {
                 name = "copilot-lualine";
                 src = copilot-lualine-nvim;
               };
-              gp = buildVimPlugin {
+              gp = final.vimUtils.buildVimPlugin {
                 name = "gp-nvim";
                 src = gp-nvim;
               };
-            });
+            };
           })
           (prev: final: {
             onethirtyfive-neovim = import ./onethirtyfive-neovim { pkgs = final; };
