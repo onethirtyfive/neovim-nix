@@ -73,7 +73,7 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp_document_symbol' },
-    { name = 'crates' },
+    -- { name = 'crates' },
   },
 
   experimental = { ghost_text = true },

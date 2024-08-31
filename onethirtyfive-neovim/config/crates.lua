@@ -1,3 +1,5 @@
+-- not loaded by `default.nix`
+
 local crates = require('crates')
 
 crates.setup{

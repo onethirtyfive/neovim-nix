@@ -18,7 +18,7 @@ let
 
         sources = [
           ./init.lua
-          ./config/crates.lua
+          # ./config/crates.lua
           ./config/gp.lua
           ./config/lsp.lua
           ./config/lualine.lua

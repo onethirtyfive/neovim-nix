@@ -96,7 +96,7 @@ require('which-key').setup{
 }
 require('Comment').setup{}
 require('nvim-ts-autotag').setup{}
-require('crates').setup{}
+-- require('crates').setup{}
 require("nvim-tree").setup({
   sync_root_with_cwd = true,
   respect_buf_cwd = true,

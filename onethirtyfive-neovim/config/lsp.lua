@@ -67,8 +67,8 @@ local on_attach = function(_, bufnr)
       vim.cmd('h '..vim.fn.expand('<cword>'))
     elseif vim.tbl_contains({ 'man' }, filetype) then
       vim.cmd('Man '..vim.fn.expand('<cword>'))
-    elseif vim.fn.expand('%:t') == 'Cargo.toml' and require('crates').popup_available() then
-      require('crates').show_popup()
+    -- elseif vim.fn.expand('%:t') == 'Cargo.toml' and require('crates').popup_available() then
+    --   require('crates').show_popup()
     else
       vim.lsp.buf.hover()
     end
@@ -122,7 +122,7 @@ configure_lsp('tsserver')
 configure_lsp('taplo')
 configure_lsp('jsonls')
 
-require('crates').setup()
+-- require('crates').setup()
 
 vim.g.rustaceanvim = {
   server = {
