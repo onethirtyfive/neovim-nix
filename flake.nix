@@ -20,6 +20,8 @@
     nightfox-nvim.flake = false;
     nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
     nvim-tree-lua.flake = false;
+    nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter/v0.9.2";
+    nvim-treesitter.flake = false;
     nvim-treesitter-textobjects.url = "github:nvim-treesitter/nvim-treesitter-textobjects";
     nvim-treesitter-textobjects.flake = false;
     nvim-ts-autotag.url = "github:windwp/nvim-ts-autotag";
@@ -52,6 +54,7 @@
     lualine-nvim,
     nightfox-nvim,
     nvim-tree-lua,
+    nvim-treesitter,
     nvim-treesitter-textobjects,
     nvim-ts-autotag,
     nvim-web-devicons,
@@ -104,6 +107,9 @@
               });
               plenary-nvim = final.vimPlugins.plenary-nvim.overrideAttrs (prev: prev // {
                 src = plenary-nvim;
+              });
+              nvim-treesitter = final.vimPlugins.nvim-treesitter.overrideAttrs (prev: prev // {
+                src = nvim-treesitter;
               });
               nvim-ts-autotag = final.vimPlugins.nvim-ts-autotag.overrideAttrs (prev: prev // {
                 src = nvim-ts-autotag;
