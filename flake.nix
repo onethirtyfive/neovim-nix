@@ -32,6 +32,8 @@
     plenary-nvim.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
+    rustaceanvim.url = "github:mrcjkb/rustaceanvim";
+    rustaceanvim.flake = true; # this *does* provide a flake!
     telescope-fzf-native-nvim.url = "github:nvim-telescope/telescope-fzf-native.nvim";
     telescope-fzf-native-nvim.flake = false;
     telescope-live-grep-args-nvim.url = "github:nvim-telescope/telescope-live-grep-args.nvim";
@@ -60,6 +62,7 @@
     nvim-web-devicons,
     plenary-nvim,
     project-nvim,
+    rustaceanvim,
     telescope-fzf-native-nvim,
     telescope-live-grep-args-nvim,
     telescope-nvim,
@@ -120,6 +123,9 @@
               project-nvim = final.vimPlugins.project-nvim.overrideAttrs (prev: prev // {
                 src = project-nvim;
                 patches = [ ./patches/project-nvim/fix-get_clients.patch ];
+              });
+              rustaceanvim = final.vimPlugins.rustaceanvim.overrideAttrs (prev: prev // {
+                src = rustaceanvim;
               });
               telescope-fzf-native-nvim = final.vimPlugins.telescope-fzf-native-nvim.overrideAttrs (prev: prev // {
                 src = telescope-fzf-native-nvim;

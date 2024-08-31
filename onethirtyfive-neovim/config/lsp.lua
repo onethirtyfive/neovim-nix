@@ -124,12 +124,11 @@ configure_lsp('jsonls')
 
 require('crates').setup()
 
-require'rust-tools'.setup{
+vim.g.rustaceanvim = {
   server = {
     on_attach = function(...)
-      local rt = require('rust-tools')
-      vim.keymap.set("n", "<leader>H", rt.hover_actions.hover_actions, { silent=true, noremap=true, desc="Hover actions" })
-      vim.keymap.set("n", "<leader>cA", rt.code_action_group.code_action_group, { silent=true, noremap=true, desc = "Code [A]ction group" })
+      -- vim.keymap.set("n", "<leader>H", rustaceanvim.hover_actions.hover_actions, { silent=true, noremap=true, desc="Hover actions" })
+      -- vim.keymap.set("n", "<leader>cA", rustaceanvim.code_action_group.code_action_group, { silent=true, noremap=true, desc = "Code [A]ction group" })
       on_attach(...)
     end
   },

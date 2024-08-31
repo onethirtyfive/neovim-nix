@@ -94,7 +94,7 @@ in (with vimPlugins; [
 
   # rust
   plenary-nvim
-  rust-tools-nvim
+  rustaceanvim
   crates-nvim
 
   # lsp: meta
