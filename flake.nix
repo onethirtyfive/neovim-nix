@@ -16,6 +16,8 @@
     gitsigns-nvim.flake = false;
     lualine-nvim.url = "github:nvim-lualine/lualine.nvim";
     lualine-nvim.flake = false;
+    nightfox-nvim.url = "github:EdenEast/nightfox.nvim";
+    nightfox-nvim.flake = false;
     nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
     nvim-tree-lua.flake = false;
     nvim-web-devicons.url = "github:nvim-tree/nvim-web-devicons";
@@ -42,6 +44,7 @@
     gitsigns-nvim,
     gp-nvim,
     lualine-nvim,
+    nightfox-nvim,
     nvim-tree-lua,
     nvim-web-devicons,
     project-nvim,
@@ -80,6 +83,9 @@
               };
               lualine-nvim = final.vimPlugins.lualine-nvim.overrideAttrs (prev: prev // {
                 src = lualine-nvim;
+              });
+              nightfox-nvim = final.vimPlugins.nightfox-nvim.overrideAttrs (prev: prev // {
+                src = nightfox-nvim;
               });
               nvim-tree-lua = final.vimPlugins.nvim-tree-lua.overrideAttrs (prev: prev // {
                 src = nvim-tree-lua;

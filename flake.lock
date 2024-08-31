@@ -264,6 +264,22 @@
         "type": "github"
       }
     },
+    "nightfox-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721661222,
+        "narHash": "sha256-2efugsL7pbQ78XxwWRybnfxhuqe7LSUgpTlwcJJTAX0=",
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
+        "rev": "d3e8b1acc095baf57af81bb5e89fe7c4359eb619",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1724840184,
@@ -336,6 +352,7 @@
         "gp-nvim": "gp-nvim",
         "lualine-nvim": "lualine-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nightfox-nvim": "nightfox-nvim",
         "nixpkgs": [
           "neovim-nightly-overlay",
           "nixpkgs"
