@@ -1,23 +1,23 @@
 {
   description = "My own Neovim flake";
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    };
-    neovim = {
-      url = "github:neovim/neovim?dir=contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    neovim.url = "github:neovim/neovim?dir=contrib";
+    neovim.inputs.nixpkgs.follows = "nixpkgs";
 
-    # gp.nvim
-    plugin-gp-nvim.url = "github:Robitx/gp.nvim";
-    plugin-gp-nvim.flake = false;
-
-    # copilot-lualine.nvim
-    plugin-copilot-lualine-nvim.url = "github:AndreM222/copilot-lualine";
-    plugin-copilot-lualine-nvim.flake = false;
+    # nvim plugin sources:
+    copilot-lualine-nvim.url = "github:AndreM222/copilot-lualine";
+    copilot-lualine-nvim.flake = false;
+    gp-nvim.url = "github:Robitx/gp.nvim";
+    gp-nvim.flake = false;
   };
-  outputs = { self, nixpkgs, neovim, plugin-gp-nvim, plugin-copilot-lualine-nvim }:
+  outputs = {
+    self,
+    nixpkgs,
+    neovim,
+    copilot-lualine-nvim,
+    gp-nvim,
+  }:
   let
     systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
     forEachSystem = nixpkgs.lib.genAttrs systems;
@@ -31,11 +31,11 @@
             vimPlugins = final.vimPlugins // {
               copilot-lualine = final.vimUtils.buildVimPlugin {
                 name = "copilot-lualine";
-                src = plugin-copilot-lualine-nvim;
+                src = copilot-lualine-nvim;
               };
               gp = final.vimUtils.buildVimPlugin {
                 name = "gp-nvim";
-                src = plugin-gp-nvim;
+                src = gp-nvim;
               };
             };
           })

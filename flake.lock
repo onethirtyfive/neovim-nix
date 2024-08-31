@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "copilot-lualine-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717725038,
+        "narHash": "sha256-zxSiSccuQE62hNZZgL4kn0G3OF5m4eA9lX4v+tGh5+U=",
+        "owner": "AndreM222",
+        "repo": "copilot-lualine",
+        "rev": "4cca52f4d4d6c7439c51227d8054e346ef5ff0e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AndreM222",
+        "repo": "copilot-lualine",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -12,6 +28,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "gp-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723453874,
+        "narHash": "sha256-2vjPoRiT26dftA0t4hdGedN6qZyIgQUjGMRF4IND/O4=",
+        "owner": "Robitx",
+        "repo": "gp.nvim",
+        "rev": "861ed5240214dc76b00edeaec15e71370a7a5046",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Robitx",
+        "repo": "gp.nvim",
         "type": "github"
       }
     },
@@ -54,44 +86,12 @@
         "type": "github"
       }
     },
-    "plugin-copilot-lualine-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1706624198,
-        "narHash": "sha256-Ma0wpY2Tg0Kr6Epu3QyGesXRjOcugyJ2NTuOUPSLvLk=",
-        "owner": "AndreM222",
-        "repo": "copilot-lualine",
-        "rev": "9e226cf8f4653e13ec282f5878d66aa435899c8c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AndreM222",
-        "repo": "copilot-lualine",
-        "type": "github"
-      }
-    },
-    "plugin-gp-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716894041,
-        "narHash": "sha256-Cgk8zbYVpELMSQoRpg0TG75k2qtvbftNDuuu+JSPD9I=",
-        "owner": "Robitx",
-        "repo": "gp.nvim",
-        "rev": "486a061d95a50e3c9a2e7c0309464fd32e3df590",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Robitx",
-        "repo": "gp.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
+        "copilot-lualine-nvim": "copilot-lualine-nvim",
+        "gp-nvim": "gp-nvim",
         "neovim": "neovim",
-        "nixpkgs": "nixpkgs",
-        "plugin-copilot-lualine-nvim": "plugin-copilot-lualine-nvim",
-        "plugin-gp-nvim": "plugin-gp-nvim"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
