@@ -328,6 +328,22 @@
         "type": "github"
       }
     },
+    "nvim-ts-autotag": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724798540,
+        "narHash": "sha256-QEzUKvT+ChYSa9F4zg3Lw+7Sj0JzJem9nh2mWmS8Y+I=",
+        "owner": "windwp",
+        "repo": "nvim-ts-autotag",
+        "rev": "e239a560f338be31337e7abc3ee42515daf23f5e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "windwp",
+        "repo": "nvim-ts-autotag",
+        "type": "github"
+      }
+    },
     "nvim-web-devicons": {
       "flake": false,
       "locked": {
@@ -375,6 +391,7 @@
         ],
         "nvim-tree-lua": "nvim-tree-lua",
         "nvim-treesitter-textobjects": "nvim-treesitter-textobjects",
+        "nvim-ts-autotag": "nvim-ts-autotag",
         "nvim-web-devicons": "nvim-web-devicons",
         "project-nvim": "project-nvim",
         "telescope-fzf-native-nvim": "telescope-fzf-native-nvim",
