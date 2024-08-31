@@ -2,8 +2,6 @@
 let
   inherit (pkgs) vimPlugins;
 in (with vimPlugins; [
-  neodev-nvim
-
   # tmux
   vim-tmux-navigator
 

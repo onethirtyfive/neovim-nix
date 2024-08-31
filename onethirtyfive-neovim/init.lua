@@ -111,9 +111,6 @@ require("nvim-tree").setup({
   },
 })
 
--- Setup neovim lua configuration
-require('neodev').setup()
-
 local luasnip = require('luasnip')
 luasnip.setup{}
 luasnip.config.set_config({ history = true, updateevents = "TextChanged,TextChangedI" })
