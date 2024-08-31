@@ -10,6 +10,8 @@
     gp-nvim.url = "github:Robitx/gp.nvim";
     gp-nvim.flake = false;
 
+    project-nvim.url = "github:ahmedkhalf/project.nvim";
+    project-nvim.flake = false;
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
     vim-tmux-navigator.flake = false;
   };
@@ -19,6 +21,7 @@
     nixpkgs,
     copilot-lualine-nvim,
     gp-nvim,
+    project-nvim,
     vim-tmux-navigator,
   }:
   let
@@ -42,6 +45,10 @@
                 name = "gp-nvim";
                 src = gp-nvim;
               };
+              project-nvim = final.vimPlugins.project-nvim.overrideAttrs (prev: prev // {
+                src = project-nvim;
+                patches = [ ./patches/project-nvim/fix-get_clients.patch ];
+              });
               vim-tmux-navigator = final.vimPlugins.vim-tmux-navigator.overrideAttrs (prev: prev // {
                 src = vim-tmux-navigator;
               });
