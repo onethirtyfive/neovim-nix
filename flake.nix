@@ -14,6 +14,8 @@
     fugitive.flake = false;
     gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
     gitsigns-nvim.flake = false;
+    lualine-nvim.url = "github:nvim-lualine/lualine.nvim";
+    lualine-nvim.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
@@ -27,6 +29,7 @@
     fugitive,
     gitsigns-nvim,
     gp-nvim,
+    lualine-nvim,
     project-nvim,
     vim-tmux-navigator,
   }:
@@ -57,6 +60,9 @@
                 name = "gp-nvim";
                 src = gp-nvim;
               };
+              lualine-nvim = final.vimPlugins.lualine-nvim.overrideAttrs (prev: prev // {
+                src = lualine-nvim;
+              });
               project-nvim = final.vimPlugins.project-nvim.overrideAttrs (prev: prev // {
                 src = project-nvim;
                 patches = [ ./patches/project-nvim/fix-get_clients.patch ];

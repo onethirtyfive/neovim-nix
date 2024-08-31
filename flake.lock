@@ -209,6 +209,22 @@
         "type": "github"
       }
     },
+    "lualine-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723473562,
+        "narHash": "sha256-gCm7m96PkZyrgjmt7Efc+NMZKStAq1zr7JRCYOgGDuE=",
+        "owner": "nvim-lualine",
+        "repo": "lualine.nvim",
+        "rev": "b431d228b7bbcdaea818bdc3e25b8cdbe861f056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-lualine",
+        "repo": "lualine.nvim",
+        "type": "github"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -286,6 +302,7 @@
         "fugitive": "fugitive",
         "gitsigns-nvim": "gitsigns-nvim",
         "gp-nvim": "gp-nvim",
+        "lualine-nvim": "lualine-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": [
           "neovim-nightly-overlay",
