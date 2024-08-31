@@ -9,7 +9,7 @@ in (with vimPlugins; [
   project-nvim
 
   # scm
-  fugitive
+  fugitive # less used
   gitsigns-nvim
   vim-rhubarb
 

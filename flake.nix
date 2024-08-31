@@ -10,6 +10,8 @@
     gp-nvim.url = "github:Robitx/gp.nvim";
     gp-nvim.flake = false;
 
+    fugitive.url = "github:tpope/vim-fugitive";
+    fugitive.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
 
@@ -21,6 +23,7 @@
     neovim-nightly-overlay,
     nixpkgs,
     copilot-lualine-nvim,
+    fugitive,
     gp-nvim,
     project-nvim,
     vim-tmux-navigator,
@@ -42,6 +45,9 @@
                 name = "copilot-lualine";
                 src = copilot-lualine-nvim;
               };
+              fugitive = final.vimPlugins.fugitive.overrideAttrs (prev: prev // {
+                src = fugitive;
+              });
               gp = final.vimUtils.buildVimPlugin {
                 name = "gp-nvim";
                 src = gp-nvim;

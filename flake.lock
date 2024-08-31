@@ -90,6 +90,22 @@
         "type": "indirect"
       }
     },
+    "fugitive": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721347143,
+        "narHash": "sha256-NLHaXpPrb4/QuVuTjl6YUUKA3/1r4VCOaNO48Dk9pms=",
+        "owner": "tpope",
+        "repo": "vim-fugitive",
+        "rev": "0444df68cd1cdabc7453d6bd84099458327e5513",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpope",
+        "repo": "vim-fugitive",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -251,6 +267,7 @@
     "root": {
       "inputs": {
         "copilot-lualine-nvim": "copilot-lualine-nvim",
+        "fugitive": "fugitive",
         "gp-nvim": "gp-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": [
