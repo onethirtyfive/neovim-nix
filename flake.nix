@@ -8,9 +8,6 @@
       url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
 
     # gp.nvim
     plugin-gp-nvim.url = "github:Robitx/gp.nvim";
@@ -20,40 +17,56 @@
     plugin-copilot-lualine-nvim.url = "github:AndreM222/copilot-lualine";
     plugin-copilot-lualine-nvim.flake = false;
   };
-  outputs = { self, nixpkgs, neovim, flake-utils, plugin-gp-nvim, plugin-copilot-lualine-nvim }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs =
-          let
-            overlays = [
-              (prev: final: {
-                neovim = neovim.packages.${prev.system}.neovim;
-                vimPlugins = final.vimPlugins // {
-                  copilot-lualine = final.vimUtils.buildVimPlugin {
-                    name = "copilot-lualine";
-                    src = plugin-copilot-lualine-nvim;
-                  };
-                  gp = final.vimUtils.buildVimPlugin {
-                    name = "gp-nvim";
-                    src = plugin-gp-nvim;
-                  };
-                };
-              })
-              (prev: final: {
-                onethirtyfive-neovim = import ./onethirtyfive-neovim { inherit pkgs; };
-              })
-            ];
-          in import nixpkgs { inherit system overlays; };
-      in
-      {
-        packages = rec {
-          nvim = pkgs.onethirtyfive-neovim;
-          default = nvim;
-        };
+  outputs = { self, nixpkgs, neovim, plugin-gp-nvim, plugin-copilot-lualine-nvim }:
+  let
+    systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
+    forEachSystem = nixpkgs.lib.genAttrs systems;
 
-        apps = rec {
-          nvim = flake-utils.lib.mkApp { drv = self.packages.${system}.nvim; };
-          default = nvim;
+    mkPkgs =
+      system:
+      let
+        overlays = [
+          (prev: final: {
+            neovim = neovim.packages.${prev.system}.neovim;
+            vimPlugins = final.vimPlugins // {
+              copilot-lualine = final.vimUtils.buildVimPlugin {
+                name = "copilot-lualine";
+                src = plugin-copilot-lualine-nvim;
+              };
+              gp = final.vimUtils.buildVimPlugin {
+                name = "gp-nvim";
+                src = plugin-gp-nvim;
+              };
+            };
+          })
+          (prev: final: {
+            onethirtyfive-neovim = import ./onethirtyfive-neovim { pkgs = final; };
+          })
+        ];
+      in import nixpkgs { inherit system overlays; };
+  in
+  {
+    packages = forEachSystem (
+      system:
+      let
+        pkgs = mkPkgs system;
+      in rec {
+        default = nvim;
+
+        nvim = pkgs.onethirtyfive-neovim;
+      }
+    );
+
+    apps = forEachSystem (
+      system:
+      rec {
+        default = nvim;
+
+        nvim = {
+          type = "app";
+          program = "${self.packages.${system}.nvim}/bin/nvim";
         };
-    });
+      }
+    );
+  };
 }
