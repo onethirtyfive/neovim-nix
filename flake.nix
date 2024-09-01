@@ -18,6 +18,8 @@
     cmp-git.flake = false;
     cmp-nvim-lsp.url = "github:hrsh7th/cmp-nvim-lsp";
     cmp-nvim-lsp.flake = false;
+    cmp-path.url = "github:hrsh7th/cmp-path";
+    cmp-path.flake = false;
     comment-nvim.url = "github:numToStr/comment.nvim";
     comment-nvim.flake = false;
     copilot-lua.url = "github:zbirenbaum/copilot.lua";
@@ -81,6 +83,7 @@
     cmp-cmdline,
     cmp-git,
     cmp-nvim-lsp,
+    cmp-path,
     comment-nvim,
     copilot-lua,
     copilot-lualine-nvim,
@@ -135,6 +138,9 @@
               });
               cmp-nvim-lsp = final.vimPlugins.cmp-nvim-lsp.overrideAttrs (prev: prev // {
                 src = cmp-nvim-lsp;
+              });
+              cmp-path = final.vimPlugins.cmp-path.overrideAttrs (prev: prev // {
+                src = cmp-path;
               });
               comment-nvim = final.vimPlugins.comment-nvim.overrideAttrs (prev: prev // {
                 src = comment-nvim;

@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "cmp-path": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664784283,
+        "narHash": "sha256-thppiiV3wjIaZnAXmsh7j3DUc6ceSCvGzviwFUnoPaI=",
+        "owner": "hrsh7th",
+        "repo": "cmp-path",
+        "rev": "91ff86cd9c29299a64f968ebb45846c485725f23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "repo": "cmp-path",
+        "type": "github"
+      }
+    },
     "comment-nvim": {
       "flake": false,
       "locked": {
@@ -1363,6 +1379,7 @@
         "cmp-cmdline": "cmp-cmdline",
         "cmp-git": "cmp-git",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
+        "cmp-path": "cmp-path",
         "comment-nvim": "comment-nvim",
         "copilot-lua": "copilot-lua",
         "copilot-lualine-nvim": "copilot-lualine-nvim",
