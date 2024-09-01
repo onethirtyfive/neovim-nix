@@ -68,7 +68,7 @@ in (with vimPlugins; [
   fidget-nvim
 
   # lsp: utility
-  # copilot-lua
+  gp
   lsp_signature-nvim
   lspkind-nvim
   luasnip
