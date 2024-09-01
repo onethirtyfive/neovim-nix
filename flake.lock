@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "cmp-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1635461540,
+        "narHash": "sha256-1UjjqMBq3+B/TKVdYH4N3a0MZLs4LKoLsdAF0gyP0TY=",
+        "owner": "hrsh7th",
+        "repo": "cmp-git",
+        "rev": "169202582f900b0e189eed5153b291383bfbba47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "repo": "cmp-git",
+        "type": "github"
+      }
+    },
     "comment-nvim": {
       "flake": false,
       "locked": {
@@ -1295,6 +1311,7 @@
     },
     "root": {
       "inputs": {
+        "cmp-git": "cmp-git",
         "comment-nvim": "comment-nvim",
         "copilot-lua": "copilot-lua",
         "copilot-lualine-nvim": "copilot-lualine-nvim",

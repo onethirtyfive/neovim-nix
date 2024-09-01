@@ -119,7 +119,6 @@ in (with vimPlugins; [
   cmp-git
   cmp-buffer
   cmp-cmdline
-  cmp-git
   cmp-nvim-lsp
   cmp-path
   cmp_luasnip
