@@ -1,5 +1,7 @@
 # Personal Neovim Flake
 
+[![Build All Outputs](https://github.com/onethirtyfive/neovim-nix/actions/workflows/build-all-outputs.yml/badge.svg)](https://github.com/onethirtyfive/neovim-nix/actions/workflows/build-all-outputs.yml)
+
 ## Purpose
 
 There are a litany of neovim flakes on github. Most of them expose options to
