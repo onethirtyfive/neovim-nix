@@ -20,6 +20,8 @@
     fugitive.flake = false;
     gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
     gitsigns-nvim.flake = false;
+    indent-blankline-nvim.url = "github:lukas-reineke/indent-blankline.nvim";
+    indent-blankline-nvim.flake = false;
     lsp_signature-nvim.url = "github:ray-x/lsp_signature.nvim";
     lsp_signature-nvim.flake = false;
     lspkind-nvim.url = "github:onsails/lspkind-nvim";
@@ -70,6 +72,7 @@
     fugitive,
     gitsigns-nvim,
     gp-nvim,
+    indent-blankline-nvim,
     lsp_signature-nvim,
     lspkind-nvim,
     lualine-nvim,
@@ -126,6 +129,9 @@
                 name = "gp-nvim";
                 src = gp-nvim;
               };
+              indent-blankline-nvim = final.vimPlugins.indent-blankline-nvim.overrideAttrs (prev: prev // {
+                src = indent-blankline-nvim;
+              });
               lsp_signature-nvim = final.vimPlugins.lsp_signature-nvim.overrideAttrs (prev: prev // {
                 src = lsp_signature-nvim;
               });
