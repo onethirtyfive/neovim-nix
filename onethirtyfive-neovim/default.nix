@@ -39,6 +39,7 @@ let
           ./config/treesitter.lua
           ./config/cmp.lua
           ./config/telescope.lua
+          ./config/copilot.lua
         ];
       in concatStringsSep "\n" (map readFile sources);
   });
@@ -47,7 +48,6 @@ in pkgs.writeShellApplication {
 
   runtimeInputs = with pkgs; [
     fswatch
-
     marksman
     nil
     nmap
@@ -57,9 +57,9 @@ in pkgs.writeShellApplication {
     # terraform
     # terraform-ls
     texlab
-    taplo
   ]
-    ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ]);
+    ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ])
+    ++ (with pkgs.python3Packages; [ python-lsp-server pylsp-mypy ]);
 
   text = ''
     ${wrapped}/bin/nvim "$@"

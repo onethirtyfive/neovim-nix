@@ -69,6 +69,8 @@ in (with vimPlugins; [
 
   # lsp: utility
   gp
+  copilot-lua
+  copilot-lualine
   lsp_signature-nvim
   lspkind-nvim
   luasnip
@@ -80,7 +82,6 @@ in (with vimPlugins; [
 
   # cmp
   nvim-cmp
-  # copilot-cmp
   cmp-git
   cmp-buffer
   cmp-cmdline

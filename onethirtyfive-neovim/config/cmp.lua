@@ -19,7 +19,7 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
     ["<Tab>"] = cmp.mapping(function(fallback)
       local has_words_before = function()
@@ -52,8 +52,6 @@ cmp.setup {
   sorting = {
     priority_weight = 2,
     comparators = {
-      -- require("copilot_cmp.comparators").prioritize,
-
       -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,
       -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
@@ -68,7 +66,6 @@ cmp.setup {
     },
   },
   sources = {
-    -- { name = 'copilot', group_index = 2 },
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'luasnip', group_index = 2 },
     { name = 'buffer', group_index = 3 },
@@ -128,5 +125,10 @@ cmp.setup.cmdline(':', {
   })
 })
 
--- require('copilot_cmp').setup()
+cmp.event:on("menu_opened", function()
+  vim.b.copilot_suggestion_hidden = true
+end)
 
+cmp.event:on("menu_closed", function()
+  vim.b.copilot_suggestion_hidden = false
+end)
