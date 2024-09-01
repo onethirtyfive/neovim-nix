@@ -10,6 +10,8 @@
     gp-nvim.url = "github:Robitx/gp.nvim";
     gp-nvim.flake = false;
 
+    cmp-buffer.url = "github:hrsh7th/cmp-buffer";
+    cmp-buffer.flake = false;
     cmp-git.url = "github:hrsh7th/cmp-git";
     cmp-git.flake = false;
     comment-nvim.url = "github:numToStr/comment.nvim";
@@ -71,6 +73,7 @@
     self,
     neovim-nightly-overlay,
     nixpkgs,
+    cmp-buffer,
     cmp-git,
     comment-nvim,
     copilot-lua,
@@ -115,6 +118,9 @@
             neovim = neovim-nightly-overlay.packages.${prev.system}.default;
 
             vimPlugins = final.vimPlugins // {
+              cmp-buffer = final.vimPlugins.cmp-buffer.overrideAttrs (prev: prev // {
+                src = cmp-buffer;
+              });
               cmp-git = final.vimPlugins.cmp-git.overrideAttrs (prev: prev // {
                 src = cmp-git;
               });
