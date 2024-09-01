@@ -6,20 +6,6 @@ let
   config = makeNeovimConfig {
     withNodeJs = true;
 
-    extraPython3Packages = (ps: with ps; [
-      # black
-      pylint
-
-      # python-lsp-server
-      # python-lsp-black
-      pylsp-mypy
-      pynvim
-
-      typing-extensions
-
-      python-pam
-    ]);
-
     plugins = import ./plugins.nix { inherit pkgs; };
 
     vimAlias = true;
@@ -59,7 +45,15 @@ in pkgs.writeShellApplication {
     texlab
   ]
     ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ])
-    ++ (with pkgs.python3Packages; [ python-lsp-server pylsp-mypy ]);
+    # TODO: set up python with packages?:
+    ++ (with pkgs.python3Packages; [
+         pynvim
+         python-lsp-server
+         pylsp-mypy
+         python-pam
+         ruff
+         typing-extensions
+       ]);
 
   text = ''
     ${wrapped}/bin/nvim "$@"
