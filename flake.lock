@@ -72,11 +72,28 @@
         "type": "github"
       }
     },
+    "plugin-gp-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716894041,
+        "narHash": "sha256-Cgk8zbYVpELMSQoRpg0TG75k2qtvbftNDuuu+JSPD9I=",
+        "owner": "Robitx",
+        "repo": "gp.nvim",
+        "rev": "486a061d95a50e3c9a2e7c0309464fd32e3df590",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Robitx",
+        "repo": "gp.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "neovim": "neovim",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plugin-gp-nvim": "plugin-gp-nvim"
       }
     },
     "systems": {
