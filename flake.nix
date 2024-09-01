@@ -56,6 +56,8 @@
     telescope-live-grep-args-nvim.flake = false;
     telescope-nvim.url = "github:nvim-telescope/telescope.nvim";
     telescope-nvim.flake = false;
+    vim-sleuth.url = "github:tpope/vim-sleuth";
+    vim-sleuth.flake = false;
     vim-tmux-navigator.url = "github:christoomey/vim-tmux-navigator";
     vim-tmux-navigator.flake = false;
     which-key-nvim.url = "github:folke/which-key.nvim";
@@ -90,6 +92,7 @@
     telescope-fzf-native-nvim,
     telescope-live-grep-args-nvim,
     telescope-nvim,
+    vim-sleuth,
     vim-tmux-navigator,
     which-key-nvim
   }:
@@ -183,6 +186,9 @@
               });
               telescope-nvim = final.vimPlugins.telescope-nvim.overrideAttrs (prev: prev // {
                 src = telescope-nvim;
+              });
+              vim-sleuth = final.vimPlugins.vim-sleuth.overrideAttrs (prev: prev // {
+                src = vim-sleuth;
               });
               vim-tmux-navigator = final.vimPlugins.vim-tmux-navigator.overrideAttrs (prev: prev // {
                 src = vim-tmux-navigator;
