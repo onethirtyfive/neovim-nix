@@ -2,6 +2,7 @@
   description = "My own Neovim flake";
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nix-github-actions.url = "github:nix-community/nix-github-actions";
     nixpkgs.follows = "neovim-nightly-overlay/nixpkgs";
 
     # nvim plugin sources:
@@ -80,6 +81,7 @@
   outputs = {
     self,
     neovim-nightly-overlay,
+    nix-github-actions,
     nixpkgs,
     cmp_luasnip,
     cmp-buffer,
@@ -118,7 +120,7 @@
     which-key-nvim
   }:
   let
-    systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
+    systems = [ "x86_64-linux" "aarch64-darwin" ];
     forEachSystem = nixpkgs.lib.genAttrs systems;
 
     mkPkgs =
@@ -247,14 +249,19 @@
       in import nixpkgs { inherit system overlays; };
   in
   {
+    nixConfig = {
+      extra-trusted-public-keys = "onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg=";
+      extra-substituters = "https://onethirtyfive.cachix.org";
+    };
+
+    githubActions = nix-github-actions.lib.mkGithubMatrix { checks = self.packages; };
+
     packages = forEachSystem (
       system:
       let
         pkgs = mkPkgs system;
-      in rec {
-        default = nvim;
-
-        nvim = pkgs.onethirtyfive-neovim;
+      in {
+        default = pkgs.onethirtyfive-neovim;
       }
     );
 

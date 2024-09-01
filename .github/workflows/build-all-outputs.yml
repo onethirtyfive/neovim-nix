@@ -1,0 +1,72 @@
+name: Build All Outputs
+
+on: [push]
+
+jobs:
+  matrix-from-flake:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v27
+      with:
+        extra_nix_config: |
+          accept-flake-config = true
+    - name: Use onethirtyfive binary cache
+      uses: cachix/cachix-action@v15
+      with:
+        name: onethirtyfive
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - id: set-matrix
+      name: Generate build matrix from flake.nix
+      run: |
+        set -Eeu
+        raw_matrix="$(nix eval --json '.#githubActions.matrix')"
+        echo "$raw_matrix"
+        matrix=$(echo "$raw_matrix" | jq -c \
+          --argjson runnerSelectors '{
+            "x86_64-linux": "ubuntu-latest",
+            "aarch64-darwin": "macos-latest"
+          }' '{
+            include: (
+              .include | map({
+                os: .os,
+                cpu: (.attr | capture("checks\\.(?<arch>[^-]+)").arch | if . == "x86_64" then "Intel" elif . == "aarch64" then "Apple" else "Unknown" end),
+                attr: .attr,
+                arch: (.attr | capture("checks\\.(?<arch>[^.]+)").arch),
+              }) | map({
+                attr: .attr,
+                jobName: "nvim (\(.os[0]); \(.cpu))",
+                runner: $runnerSelectors["\(.arch)"],
+              })
+            )
+          }'
+        )
+        echo "$matrix"
+        echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+  build-with-nix:
+    runs-on: ${{ matrix.runner }}
+    needs: matrix-from-flake
+    strategy:
+      matrix: ${{ fromJSON(needs.matrix-from-flake.outputs.matrix) }}
+    name: "${{ matrix.jobName }}"
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+    - name: Install Nix
+      uses: cachix/install-nix-action@v27
+      with:
+        extra_nix_config: |
+          accept-flake-config = true
+    - name: Use onethirtyfive binary cache
+      uses: cachix/cachix-action@v15
+      with:
+        name: onethirtyfive
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - name: Build
+      run: |
+        nix build '.#${{ matrix.attr }}' \
+          --impure --keep-going --accept-flake-config -L
+
