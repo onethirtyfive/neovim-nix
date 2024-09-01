@@ -12,6 +12,8 @@
 
     cmp-buffer.url = "github:hrsh7th/cmp-buffer";
     cmp-buffer.flake = false;
+    cmp-cmdline.url = "github:hrsh7th/cmp-cmdline";
+    cmp-cmdline.flake = false;
     cmp-git.url = "github:hrsh7th/cmp-git";
     cmp-git.flake = false;
     comment-nvim.url = "github:numToStr/comment.nvim";
@@ -74,6 +76,7 @@
     neovim-nightly-overlay,
     nixpkgs,
     cmp-buffer,
+    cmp-cmdline,
     cmp-git,
     comment-nvim,
     copilot-lua,
@@ -120,6 +123,9 @@
             vimPlugins = final.vimPlugins // {
               cmp-buffer = final.vimPlugins.cmp-buffer.overrideAttrs (prev: prev // {
                 src = cmp-buffer;
+              });
+              cmp-cmdline = final.vimPlugins.cmp-cmdline.overrideAttrs (prev: prev // {
+                src = cmp-cmdline;
               });
               cmp-git = final.vimPlugins.cmp-git.overrideAttrs (prev: prev // {
                 src = cmp-git;
