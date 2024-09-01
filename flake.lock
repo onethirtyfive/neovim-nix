@@ -1127,6 +1127,22 @@
         "type": "github"
       }
     },
+    "nvim-cmp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722509464,
+        "narHash": "sha256-NcodgUp8obTsjgc+5j2dKr0f3FelYikQTJngfZXRZzo=",
+        "owner": "hrsh7th",
+        "repo": "nvim-cmp",
+        "rev": "ae644feb7b67bf1ce4260c231d1d4300b19c6f30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "repo": "nvim-cmp",
+        "type": "github"
+      }
+    },
     "nvim-lspconfig": {
       "flake": false,
       "locked": {
@@ -1297,6 +1313,7 @@
           "neovim-nightly-overlay",
           "nixpkgs"
         ],
+        "nvim-cmp": "nvim-cmp",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-tree-lua": "nvim-tree-lua",
         "nvim-treesitter": "nvim-treesitter",

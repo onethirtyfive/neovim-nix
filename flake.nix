@@ -32,6 +32,8 @@
     luasnip.flake = false;
     nightfox-nvim.url = "github:EdenEast/nightfox.nvim";
     nightfox-nvim.flake = false;
+    nvim-cmp.url = "github:hrsh7th/nvim-cmp";
+    nvim-cmp.flake = false;
     nvim-lspconfig.url = "github:neovim/nvim-lspconfig";
     nvim-lspconfig.flake = false;
     nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
@@ -80,6 +82,7 @@
     lualine-nvim,
     luasnip,
     nightfox-nvim,
+    nvim-cmp,
     nvim-lspconfig,
     nvim-tree-lua,
     nvim-treesitter,
@@ -161,6 +164,9 @@
               });
               plenary-nvim = final.vimPlugins.plenary-nvim.overrideAttrs (prev: prev // {
                 src = plenary-nvim;
+              });
+              nvim-cmp = final.vimPlugins.nvim-cmp.overrideAttrs (prev: prev // {
+                src = nvim-cmp;
               });
               nvim-treesitter = final.vimPlugins.nvim-treesitter.overrideAttrs (prev: prev // {
                 src = nvim-treesitter;
