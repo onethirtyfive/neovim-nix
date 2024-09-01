@@ -10,6 +10,8 @@
     gp-nvim.url = "github:Robitx/gp.nvim";
     gp-nvim.flake = false;
 
+    comment-nvim.url = "github:numToStr/comment.nvim";
+    comment-nvim.flake = false;
     copilot-lua.url = "github:zbirenbaum/copilot.lua";
     copilot-lua.flake = false;
     fidget-nvim.url = "github:j-hui/fidget.nvim";
@@ -61,6 +63,7 @@
     self,
     neovim-nightly-overlay,
     nixpkgs,
+    comment-nvim,
     copilot-lua,
     copilot-lualine-nvim,
     fidget-nvim,
@@ -100,6 +103,9 @@
             neovim = neovim-nightly-overlay.packages.${prev.system}.default;
 
             vimPlugins = final.vimPlugins // {
+              comment-nvim = final.vimPlugins.comment-nvim.overrideAttrs (prev: prev // {
+                src = comment-nvim;
+              });
               copilot-lua = final.vimPlugins.copilot-lua.overrideAttrs (prev: prev // {
                 src = copilot-lua;
               });
