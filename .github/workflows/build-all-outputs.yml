@@ -67,6 +67,5 @@ jobs:
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - name: Build
       run: |
-        nix build '.#${{ matrix.attr }}' \
-          --impure --keep-going --accept-flake-config -L
+        nix build '.#${{ matrix.attr }}' --keep-going --accept-flake-config -L
 
