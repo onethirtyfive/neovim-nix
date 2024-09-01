@@ -10,6 +10,8 @@
     gp-nvim.url = "github:Robitx/gp.nvim";
     gp-nvim.flake = false;
 
+    cmp_luasnip.url = "github:saadparwaiz1/cmp_luasnip";
+    cmp_luasnip.flake = false;
     cmp-buffer.url = "github:hrsh7th/cmp-buffer";
     cmp-buffer.flake = false;
     cmp-cmdline.url = "github:hrsh7th/cmp-cmdline";
@@ -79,6 +81,7 @@
     self,
     neovim-nightly-overlay,
     nixpkgs,
+    cmp_luasnip,
     cmp-buffer,
     cmp-cmdline,
     cmp-git,
@@ -127,6 +130,9 @@
             neovim = neovim-nightly-overlay.packages.${prev.system}.default;
 
             vimPlugins = final.vimPlugins // {
+              cmp_luasnip = final.vimPlugins.cmp_luasnip.overrideAttrs (prev: prev // {
+                src = cmp_luasnip;
+              });
               cmp-buffer = final.vimPlugins.cmp-buffer.overrideAttrs (prev: prev // {
                 src = cmp-buffer;
               });

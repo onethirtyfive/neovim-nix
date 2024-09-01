@@ -80,6 +80,22 @@
         "type": "github"
       }
     },
+    "cmp_luasnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696878902,
+        "narHash": "sha256-nUJJl2zyK/oSwz5RzI9j3gf9zpDfCImCYbPbVsyXgz8=",
+        "owner": "saadparwaiz1",
+        "repo": "cmp_luasnip",
+        "rev": "05a9ab28b53f71d1aece421ef32fee2cb857a843",
+        "type": "github"
+      },
+      "original": {
+        "owner": "saadparwaiz1",
+        "repo": "cmp_luasnip",
+        "type": "github"
+      }
+    },
     "comment-nvim": {
       "flake": false,
       "locked": {
@@ -1380,6 +1396,7 @@
         "cmp-git": "cmp-git",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp-path": "cmp-path",
+        "cmp_luasnip": "cmp_luasnip",
         "comment-nvim": "comment-nvim",
         "copilot-lua": "copilot-lua",
         "copilot-lualine-nvim": "copilot-lualine-nvim",
