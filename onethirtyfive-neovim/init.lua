@@ -36,8 +36,8 @@ vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
--- Set completeopt to have a better completion experience
--- vim.o.completeopt = 'menuone,noselect'
+-- Turn builtin completion off in favor of nvim-cmp
+vim.o.completeopt = ''
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
