@@ -669,6 +669,22 @@
         "type": "github"
       }
     },
+    "lspkind-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721915252,
+        "narHash": "sha256-1KK6JhQUtA5mxwRSKU5e3pTQzZwaoAjzycBLx5X/xlA=",
+        "owner": "onsails",
+        "repo": "lspkind-nvim",
+        "rev": "cff4ae321a91ee3473a92ea1a8c637e3a9510aec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "onsails",
+        "repo": "lspkind-nvim",
+        "type": "github"
+      }
+    },
     "lualine-nvim": {
       "flake": false,
       "locked": {
@@ -1205,6 +1221,7 @@
         "fugitive": "fugitive",
         "gitsigns-nvim": "gitsigns-nvim",
         "gp-nvim": "gp-nvim",
+        "lspkind-nvim": "lspkind-nvim",
         "lualine-nvim": "lualine-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nightfox-nvim": "nightfox-nvim",

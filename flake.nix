@@ -18,6 +18,8 @@
     fugitive.flake = false;
     gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
     gitsigns-nvim.flake = false;
+    lspkind-nvim.url = "github:onsails/lspkind-nvim";
+    lspkind-nvim.flake = false;
     lualine-nvim.url = "github:nvim-lualine/lualine.nvim";
     lualine-nvim.flake = false;
     nightfox-nvim.url = "github:EdenEast/nightfox.nvim";
@@ -61,6 +63,7 @@
     fugitive,
     gitsigns-nvim,
     gp-nvim,
+    lspkind-nvim,
     lualine-nvim,
     nightfox-nvim,
     nvim-lspconfig,
@@ -111,6 +114,9 @@
                 name = "gp-nvim";
                 src = gp-nvim;
               };
+              lspkind-nvim = final.vimPlugins.lspkind-nvim.overrideAttrs (prev: prev // {
+                src = lspkind-nvim;
+              });
               lualine-nvim = final.vimPlugins.lualine-nvim.overrideAttrs (prev: prev // {
                 src = lualine-nvim;
               });
