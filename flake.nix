@@ -242,9 +242,6 @@
               });
             };
           })
-          (prev: final: {
-            onethirtyfive-neovim = import ./onethirtyfive-neovim { pkgs = final; };
-          })
         ];
       in import nixpkgs { inherit system overlays; };
   in
@@ -256,12 +253,18 @@
 
     githubActions = nix-github-actions.lib.mkGithubMatrix { checks = self.packages; };
 
+    overlays = {
+      default = prev: final: {
+        onethirtyfive.neovim = self.packages.${prev.system}.default;
+      };
+    };
+
     packages = forEachSystem (
       system:
       let
         pkgs = mkPkgs system;
       in {
-        default = pkgs.onethirtyfive-neovim;
+        default = import ./onethirtyfive-neovim { inherit pkgs; };
       }
     );
 
