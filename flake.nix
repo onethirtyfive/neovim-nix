@@ -272,7 +272,7 @@
 
         nvim = {
           type = "app";
-          program = "${self.packages.${system}.nvim}/bin/nvim";
+          program = "${self.packages.${system}.default}/bin/nvim";
         };
       }
     );
