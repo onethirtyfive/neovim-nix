@@ -1,2 +1,5 @@
+# Ignore .git explicitly so fzf will ignore it but show other hidden files
+.git
+
 result
 
