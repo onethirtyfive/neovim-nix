@@ -133,12 +133,13 @@ lspkind.init({
 -- nvim-project
 require("project_nvim").setup {
   patterns = {
-    "!^nixhosts",
     ".git",
-    "package.json",
-    "pyproject.toml", "requirements.txt",
-    "Gemfile",
-    "Cargo.toml",
+    "flake.nix", -- just use flakes
+    -- "package.json",
+    -- "Gemfile",
+    -- "Cargo.toml",
+    -- "!^nixhosts",
+    -- "pyproject.toml", "requirements.txt",
   },
   exclude_dirs = {
     "~/.cargo/*",
