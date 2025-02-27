@@ -51,7 +51,7 @@
     nvim-lspconfig.flake = false;
     nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
     nvim-tree-lua.flake = false;
-    nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter/v0.9.2";
+    nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter";
     nvim-treesitter.flake = false;
     nvim-treesitter-textobjects.url = "github:nvim-treesitter/nvim-treesitter-textobjects";
     nvim-treesitter-textobjects.flake = false;
