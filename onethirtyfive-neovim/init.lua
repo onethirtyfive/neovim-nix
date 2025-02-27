@@ -170,6 +170,9 @@ vim.diagnostic.config {
 }
 
 -- vim.g.python3_host_prog = ""
+if vim.env.UV_PYTHON then
+  vim.g.python3_host_prog = vim.env.UV_PYTHON
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
