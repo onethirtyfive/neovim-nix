@@ -25,6 +25,8 @@
     cmp-path.flake = false;
     comment-nvim.url = "github:numToStr/comment.nvim";
     comment-nvim.flake = false;
+    copilot-cmp.url = "github:zbirenbaum/copilot-cmp";
+    copilot-cmp.flake = false;
     copilot-lua.url = "github:zbirenbaum/copilot.lua";
     copilot-lua.flake = false;
     fidget-nvim.url = "github:j-hui/fidget.nvim";
@@ -59,12 +61,8 @@
     nvim-ts-autotag.flake = false;
     nvim-web-devicons.url = "github:nvim-tree/nvim-web-devicons";
     nvim-web-devicons.flake = false;
-    plenary-nvim.url = "github:nvim-lua/plenary.nvim";
-    plenary-nvim.flake = false;
     project-nvim.url = "github:ahmedkhalf/project.nvim";
     project-nvim.flake = false;
-    rustaceanvim.url = "github:mrcjkb/rustaceanvim";
-    rustaceanvim.flake = true; # this *does* provide a flake!
     telescope-fzf-native-nvim.url = "github:nvim-telescope/telescope-fzf-native.nvim";
     telescope-fzf-native-nvim.flake = false;
     telescope-live-grep-args-nvim.url = "github:nvim-telescope/telescope-live-grep-args.nvim";
@@ -90,6 +88,7 @@
     cmp-nvim-lsp,
     cmp-path,
     comment-nvim,
+    copilot-cmp,
     copilot-lua,
     copilot-lualine-nvim,
     fidget-nvim,
@@ -109,9 +108,7 @@
     nvim-treesitter-textobjects,
     nvim-ts-autotag,
     nvim-web-devicons,
-    plenary-nvim,
     project-nvim,
-    rustaceanvim,
     telescope-fzf-native-nvim,
     telescope-live-grep-args-nvim,
     telescope-nvim,
@@ -152,6 +149,9 @@
               });
               comment-nvim = final.vimPlugins.comment-nvim.overrideAttrs (prev: prev // {
                 src = comment-nvim;
+              });
+              copilot-cmp = final.vimPlugins.copilot-cmp.overrideAttrs (prev: prev // {
+                src = copilot-cmp;
               });
               copilot-lua = final.vimPlugins.copilot-lua.overrideAttrs (prev: prev // {
                 src = copilot-lua;
@@ -200,9 +200,6 @@
               nvim-treesitter-textobjects = final.vimPlugins.nvim-treesitter-textobjects.overrideAttrs (prev: prev // {
                 src = nvim-treesitter-textobjects;
               });
-              plenary-nvim = final.vimPlugins.plenary-nvim.overrideAttrs (prev: prev // {
-                src = plenary-nvim;
-              });
               nvim-cmp = final.vimPlugins.nvim-cmp.overrideAttrs (prev: prev // {
                 src = nvim-cmp;
               });
@@ -218,9 +215,6 @@
               project-nvim = final.vimPlugins.project-nvim.overrideAttrs (prev: prev // {
                 src = project-nvim;
                 patches = [ ./patches/project-nvim/fix-get_clients.patch ];
-              });
-              rustaceanvim = final.vimPlugins.rustaceanvim.overrideAttrs (prev: prev // {
-                src = rustaceanvim;
               });
               telescope-fzf-native-nvim = final.vimPlugins.telescope-fzf-native-nvim.overrideAttrs (prev: prev // {
                 src = telescope-fzf-native-nvim;

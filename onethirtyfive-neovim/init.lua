@@ -1,60 +1,80 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
+
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
--- Set highlight on search
+vim.g.vim_deprecation_warning = false
 vim.o.hlsearch = false
-
--- Make line numbers default
 vim.wo.number = true
-
--- Enable mouse mode
 vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
+vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim
 vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
+vim.o.undofile = true -- undo changes saved to disk
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.wo.signcolumn = 'yes' -- Keep signcolumn on by default
+vim.o.termguicolors = true -- rich terminal colors
+vim.o.completeopt = '' -- Turn builtin completion off in favor of nvim-cmp
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+-- Remap for dealing with word wrap
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true, desc = "Toggle vimtree" })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.diagnostic.config({
+  virtual_text = false,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = 'always',
+  },
+})
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  { border = 'rounded' }
+)
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  { border = 'rounded' }
+)
+
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+sign({name = 'DiagnosticSignError', text = '✘'})
+sign({name = 'DiagnosticSignWarn', text = '▲'})
+sign({name = 'DiagnosticSignHint', text = '⚑'})
+sign({name = 'DiagnosticSignInfo', text = ''})
 
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
--- Turn builtin completion off in favor of nvim-cmp
-vim.o.completeopt = ''
+vim.api.nvim_command([[
+  silent! colorscheme carbonfox
+  silent! set bg=dark
+]]);
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+vim.api.nvim_command([[
+  silent! set et tabstop=2 shiftwidth=2 softtabstop=2
+  silent! set autoindent
+]]);
 
+-- strip trailing whitespace from all files on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
 })
 
--- vim.api.nvim_create_autocmd('BufWritePre', {
---   pattern = {"*.tf", "*.tfvars"},
---   callback = function()
---     vim.lsp.buf.formatting_sync()
---   end,
--- })
-
--- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -65,33 +85,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Basic Keymaps ]]
+-- Miscellaneous plugin setup (don't warrant own file)
 
-vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true, desc = "Toggle vimtree" })
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Diagnostic keymaps
-require('fidget').setup{}
-require('nvim-web-devicons').setup{}
-require('which-key').setup{
-  win = {
-    border = "single",
-  },
-  triggers = {
-    { "<auto>", mode = "nxso" },
-    { "<auto>", mode = "i" },
-  },
-}
-require('Comment').setup{}
-require('nvim-ts-autotag').setup{}
--- require('crates').setup{}
 require("nvim-tree").setup({
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
@@ -105,15 +100,16 @@ require("nvim-tree").setup({
       "^._*$",
       "^.DS_Store",
       "__pycache__",
-      "^.mypy_cache"
+      "^.mypy_cache",
+      "^.ruby-lsp",
     },
   },
 })
 
-local luasnip = require('luasnip')
-luasnip.setup{}
-luasnip.config.set_config({ history = true, updateevents = "TextChanged,TextChangedI" })
-
+require('fidget').setup{}
+require('nvim-web-devicons').setup{}
+require('Comment').setup{}
+require('nvim-ts-autotag').setup{}
 require('gitsigns').setup{
   signs = {
     add = { text = '+' },
@@ -124,50 +120,9 @@ require('gitsigns').setup{
   }
 }
 
-local lspkind = require("lspkind")
-lspkind.init({
-  symbol_map = {
-  },
-})
-
--- nvim-project
-require("project_nvim").setup {
-  patterns = {
-    ".git",
-    "flake.nix", -- just use flakes
-    -- "package.json",
-    -- "Gemfile",
-    -- "Cargo.toml",
-    -- "!^nixhosts",
-    -- "pyproject.toml", "requirements.txt",
-  },
-  exclude_dirs = {
-    "~/.cargo/*",
-    "rustlings/exercises",
-  },
-  ignore_lsp = { "taplo" },
-}
-
--- vim-tmux-navigator
-
-vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'Window left' })
-vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'Window right' })
-vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'Window down' })
-vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'Window up' })
-
-vim.api.nvim_command([[
-  silent! colorscheme carbonfox
-  silent! set bg=dark
-]]);
-
-vim.api.nvim_command([[
-  silent! set et tabstop=2 shiftwidth=2 softtabstop=2
-  silent! set autoindent
-]]);
-
-vim.diagnostic.config {
-  float = { border = "rounded" },
-}
+local luasnip = require('luasnip')
+luasnip.setup{}
+luasnip.config.set_config({ history = true, updateevents = "TextChanged,TextChangedI" })
 
 -- vim.g.python3_host_prog = ""
 if vim.env.UV_PYTHON then
@@ -176,4 +131,3 @@ end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-

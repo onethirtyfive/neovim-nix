@@ -1,46 +1,5 @@
 require "math"
 
-vim.diagnostic.config({
-  virtual_text = false,
-  severity_sort = true,
-  float = {
-    border = 'rounded',
-    source = 'always',
-  },
-})
-
-local sign = function(opts)
-  vim.fn.sign_define(opts.name, {
-    texthl = opts.name,
-    text = opts.text,
-    numhl = ''
-  })
-end
-
-sign({name = 'DiagnosticSignError', text = '✘'})
-sign({name = 'DiagnosticSignWarn', text = '▲'})
-sign({name = 'DiagnosticSignHint', text = '⚑'})
-sign({name = 'DiagnosticSignInfo', text = ''})
-
-vim.diagnostic.config({
-  virtual_text = false,
-  severity_sort = true,
-  float = {
-    border = 'rounded',
-    source = 'always',
-  },
-})
-
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-  vim.lsp.handlers.hover,
-  { border = 'rounded' }
-)
-
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-  vim.lsp.handlers.signature_help,
-  { border = 'rounded' }
-)
-
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -62,6 +21,7 @@ local on_attach = function(_, bufnr)
     "😉", "😊", "🙂", "🤣",
     "💩"
   }
+
   local random_emoji = function()
     return emoji[math.random(#emoji)]
   end
@@ -79,8 +39,6 @@ local on_attach = function(_, bufnr)
       vim.cmd('h '..vim.fn.expand('<cword>'))
     elseif vim.tbl_contains({ 'man' }, filetype) then
       vim.cmd('Man '..vim.fn.expand('<cword>'))
-    -- elseif vim.fn.expand('%:t') == 'Cargo.toml' and require('crates').popup_available() then
-    --   require('crates').show_popup()
     else
       vim.lsp.buf.hover()
     end
@@ -105,13 +63,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
   nmap('<leader>k', vim.lsp.buf.signature_help, '[k] signature documentation')
-
-  -- Lesser used LSP functionality (rust? ts? workspaces?)
-  -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[w]orkspace [a]dd folder')
-  -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[w]orkspace [r]emove folder')
-  -- nmap('<leader>wl', function()
-  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  -- end, '[w]orkspace [l]ist folders')
 end
 
 local lspconfig = require('lspconfig')
@@ -141,39 +92,21 @@ configure_lsp('nil_ls')
 configure_lsp('pylsp')
 configure_lsp('ruff')
 configure_lsp('texlab')
--- configure_lsp('terraformls')
 configure_lsp('ts_ls')
--- configure_lsp('standardrb')
 configure_lsp('taplo')
 configure_lsp('jsonls')
+configure_lsp('hls')
 
--- require('crates').setup()
+lspconfig["ruby_lsp"].setup({
+  on_attach = on_attach,
+  init_options = {
+    -- formatter = 'standard',
+    -- linters = { 'standard' },
+  },
+})
 
-vim.g.rustaceanvim = {
-  server = {
-    on_attach = function(...)
-      -- vim.keymap.set("n", "<leader>H", rustaceanvim.hover_actions.hover_actions, { silent=true, noremap=true, desc="Hover actions" })
-      -- vim.keymap.set("n", "<leader>cA", rustaceanvim.code_action_group.code_action_group, { silent=true, noremap=true, desc = "Code [A]ction group" })
-      on_attach(...)
-    end
+require("lspkind").init({
+  symbol_map = {
+    Copilot = "",
   },
-  tools = {
-    inlay_hints = {
-      auto = true,
-      show_parameter_hints = true,
-      parameter_hints_prefix = "",
-      other_hints_prefix = "",
-    },
-  },
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        allFeatures = true,
-        autoReload = true,
-      },
-      excludeDirs = {
-      },
-    },
-  },
-}
-
+})

@@ -18,14 +18,16 @@ let
 
         sources = [
           ./init.lua
-          # ./config/crates.lua
-          ./config/gp.lua
-          ./config/lsp.lua
-          ./config/lualine.lua
           ./config/treesitter.lua
+          ./config/lsp.lua
           ./config/cmp.lua
-          ./config/telescope.lua
+          ./config/gp.lua
           ./config/copilot.lua
+          ./config/projects.lua
+          ./config/tmux.lua
+          ./config/telescope.lua
+          ./config/whichkey.lua
+          ./config/lualine.lua
         ];
       in concatStringsSep "\n" (map readFile sources);
   });
@@ -34,6 +36,7 @@ in pkgs.writeShellApplication {
 
   runtimeInputs = with pkgs; [
     fswatch
+    haskell-language-server
     marksman
     nil
     nmap
@@ -43,7 +46,9 @@ in pkgs.writeShellApplication {
     # terraform
     # terraform-ls
     texlab
+    ruby
   ]
+    ++ (with pkgs.haskellPackages; [ fast-tags ghci-dap haskell-debug-adapter ])
     ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ])
     # TODO: set up python with packages?:
     ++ (with pkgs.python3Packages; [
@@ -53,7 +58,22 @@ in pkgs.writeShellApplication {
          python-pam
          ruff
          typing-extensions
-       ]);
+       ])
+    ++ [
+         # (
+         #  let
+         #    debug = pkgs.buildRubyGem {
+         #      pname = "debug";
+         #      gemName = "debug";
+         #      type = "gem";
+         #      version = "1.10.0";
+         #
+         #      source.sha256 = null;
+         #    };
+         #  in
+         #    pkgs.ruby.withPackages (pkgs: with pkgs; [ ruby-lsp language_server-protocol debug ])
+         # )
+       ];
 
   text = ''
     ${wrapped}/bin/nvim "$@"

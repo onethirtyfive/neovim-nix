@@ -1,10 +1,8 @@
 -- nvim-cmp setup
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 cmp.setup {
-  completion = {
-    autocomplete = false,
-  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -15,12 +13,6 @@ cmp.setup {
     documentation = cmp.config.window.bordered(),
   },
   mapping = {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-
-    ['<C-n>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
@@ -56,9 +48,8 @@ cmp.setup {
   sorting = {
     priority_weight = 2,
     comparators = {
-      -- Below is the default comparitor list and order for nvim-cmp
+      require("copilot_cmp.comparators").prioritize,
       cmp.config.compare.offset,
-      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
       cmp.config.compare.exact,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
@@ -70,6 +61,7 @@ cmp.setup {
     },
   },
   sources = {
+    { name = 'copilot', group_index = 2 },
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'luasnip', group_index = 2 },
     { name = 'buffer', group_index = 3 },
@@ -77,41 +69,28 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp_document_symbol' },
-    -- { name = 'crates' },
   },
-
-  -- experimental = { ghost_text = true },
-}
-
-local lspkind = require('lspkind')
-
-cmp.setup {
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol_text', -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      -- before = function (entry, vim_item)
-      --   ...
-      -- return vim_item
-      -- end
-    })
+    format = function(entry, vim_item)
+      vim_item.menu = entry.source.name
+      return lspkind.cmp_format({
+        mode = 'symbol_text',
+        maxwidth = 50,
+        ellipsis_char = '...',
+      })(entry, vim_item)
+    end,
   }
 }
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    { name = 'cmp_git' },
   }, {
     { name = 'buffer' },
   })
 })
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
@@ -119,7 +98,6 @@ cmp.setup.cmdline({ '/', '?' }, {
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
@@ -128,11 +106,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
-cmp.event:on("menu_opened", function()
-  vim.b.copilot_suggestion_hidden = true
-end)
-
-cmp.event:on("menu_closed", function()
-  vim.b.copilot_suggestion_hidden = false
-end)

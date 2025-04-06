@@ -92,19 +92,11 @@ in (with vimPlugins; [
   nvim-treesitter-textobjects
   nvim-ts-autotag
 
-  # rust
-  plenary-nvim
-  rustaceanvim
-  # crates-nvim
-
   # lsp: meta
   nvim-lspconfig
   fidget-nvim
 
   # lsp: utility
-  gp
-  copilot-lua
-  copilot-lualine-nvim
   lsp_signature-nvim
   lspkind-nvim
   luasnip
@@ -114,6 +106,11 @@ in (with vimPlugins; [
   indent-blankline-nvim
   vim-sleuth
 
+  # lsp: chatbot
+  gp
+  copilot-lua
+  copilot-lualine-nvim
+
   # cmp
   nvim-cmp
   cmp-git
@@ -122,6 +119,7 @@ in (with vimPlugins; [
   cmp-nvim-lsp
   cmp-path
   cmp_luasnip
+  copilot-cmp
 
   # debugging
   nvim-dap
