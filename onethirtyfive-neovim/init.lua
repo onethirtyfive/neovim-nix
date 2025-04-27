@@ -17,6 +17,15 @@ vim.wo.signcolumn = 'yes' -- Keep signcolumn on by default
 vim.o.termguicolors = true -- rich terminal colors
 vim.o.completeopt = '' -- Turn builtin completion off in favor of nvim-cmp
 
+-- always re-read a file if it changed outside of Neovim
+vim.o.autoread = true
+
+-- trigger checktime on focus or buffer enter so autoread actually fires
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  pattern = "*",
+  command = "checktime",
+})
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true, desc = "Toggle vimtree" })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
