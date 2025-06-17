@@ -2,14 +2,14 @@ local config = {
   default_chat_agent = "ChatCopilot",
   default_command_agent = "ChatCopilot",
   providers = {
-    openai = {},
+    openai = { disable = true },
     copilot = { disable = false },
   },
   agents = {
     {
+      name = "ChatCopilot",
       disable = false,
       provider = "copilot",
-      name = "ChatCopilot",
       chat = true,
       command = true,
       -- string with model name or table with model name and parameters
