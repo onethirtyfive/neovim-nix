@@ -1,4 +1,5 @@
 # Ignore .git explicitly so fzf will ignore it but show other hidden files
+.direnv
 .git
 
 result
