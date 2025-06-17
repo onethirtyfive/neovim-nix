@@ -97,13 +97,13 @@ configure_lsp('taplo')
 configure_lsp('jsonls')
 configure_lsp('hls')
 
-lspconfig["ruby_lsp"].setup({
-  on_attach = on_attach,
-  init_options = {
-    -- formatter = 'standard',
-    -- linters = { 'standard' },
-  },
-})
+-- lspconfig["ruby_lsp"].setup({
+--   on_attach = on_attach,
+--   init_options = {
+--     -- formatter = 'standard',
+--     -- linters = { 'standard' },
+--   },
+-- })
 
 require("lspkind").init({
   symbol_map = {
