@@ -40,6 +40,7 @@ in pkgs.writeShellApplication {
     marksman
     nil
     nmap
+    nodejs
     (sox.override { enableLame = true; })
     ripgrep
     taplo
