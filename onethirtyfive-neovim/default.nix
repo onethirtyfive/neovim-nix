@@ -36,7 +36,6 @@ in pkgs.writeShellApplication {
 
   runtimeInputs = with pkgs; [
     fswatch
-    haskell-language-server
     marksman
     nil
     nmap
