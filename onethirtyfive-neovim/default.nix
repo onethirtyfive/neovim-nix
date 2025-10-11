@@ -45,7 +45,6 @@ in pkgs.writeShellApplication {
     texlab
     ruby
   ]
-    ++ (with pkgs.haskellPackages; [ fast-tags ])
     ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ])
     # TODO: set up python with packages?:
     ++ (with pkgs.python3Packages; [
