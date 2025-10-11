@@ -6,10 +6,6 @@
     nixpkgs.follows = "neovim-nightly-overlay/nixpkgs";
 
     # nvim plugin sources:
-    copilot-lualine-nvim.url = "github:AndreM222/copilot-lualine";
-    copilot-lualine-nvim.flake = false;
-    gp-nvim.url = "github:Robitx/gp.nvim";
-    gp-nvim.flake = false;
 
     cmp_luasnip.url = "github:saadparwaiz1/cmp_luasnip";
     cmp_luasnip.flake = false;
@@ -25,10 +21,6 @@
     cmp-path.flake = false;
     comment-nvim.url = "github:numToStr/comment.nvim";
     comment-nvim.flake = false;
-    copilot-cmp.url = "github:zbirenbaum/copilot-cmp";
-    copilot-cmp.flake = false;
-    copilot-lua.url = "github:zbirenbaum/copilot.lua";
-    copilot-lua.flake = false;
     fidget-nvim.url = "github:j-hui/fidget.nvim";
     fidget-nvim.flake = false;
     fugitive.url = "github:tpope/vim-fugitive";
@@ -88,13 +80,9 @@
     cmp-nvim-lsp,
     cmp-path,
     comment-nvim,
-    copilot-cmp,
-    copilot-lua,
-    copilot-lualine-nvim,
     fidget-nvim,
     fugitive,
     gitsigns-nvim,
-    gp-nvim,
     indent-blankline-nvim,
     lsp_signature-nvim,
     lspkind-nvim,
@@ -150,16 +138,6 @@
               comment-nvim = final.vimPlugins.comment-nvim.overrideAttrs (prev: prev // {
                 src = comment-nvim;
               });
-              copilot-cmp = final.vimPlugins.copilot-cmp.overrideAttrs (prev: prev // {
-                src = copilot-cmp;
-              });
-              copilot-lua = final.vimPlugins.copilot-lua.overrideAttrs (prev: prev // {
-                src = copilot-lua;
-              });
-              copilot-lualine-nvim = final.vimUtils.buildVimPlugin {
-                name = "copilot-lualine-nvim";
-                src = copilot-lualine-nvim;
-              };
               fidget-nvim = final.vimPlugins.fidget-nvim.overrideAttrs (prev: prev // {
                 src = fidget-nvim;
               });
@@ -169,10 +147,6 @@
               gitsigns-nvim = final.vimPlugins.gitsigns-nvim.overrideAttrs (prev: prev // {
                 src = gitsigns-nvim;
               });
-              gp = final.vimUtils.buildVimPlugin {
-                name = "gp-nvim";
-                src = gp-nvim;
-              };
               indent-blankline-nvim = final.vimPlugins.indent-blankline-nvim.overrideAttrs (prev: prev // {
                 src = indent-blankline-nvim;
               });

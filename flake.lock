@@ -112,54 +112,6 @@
         "type": "github"
       }
     },
-    "copilot-cmp": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733947099,
-        "narHash": "sha256-erRL8bY/zuwuCZfttw+avTrFV7pjv2H6v73NzY2bymM=",
-        "owner": "zbirenbaum",
-        "repo": "copilot-cmp",
-        "rev": "15fc12af3d0109fa76b60b5cffa1373697e261d1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zbirenbaum",
-        "repo": "copilot-cmp",
-        "type": "github"
-      }
-    },
-    "copilot-lua": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752677816,
-        "narHash": "sha256-IV/IxZdGzC3KdvPmKo3CmA88HUxHkY5ENclGVI0tPLM=",
-        "owner": "zbirenbaum",
-        "repo": "copilot.lua",
-        "rev": "14bf786180b2ca4578915c56989b6d676dddc6f3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zbirenbaum",
-        "repo": "copilot.lua",
-        "type": "github"
-      }
-    },
-    "copilot-lualine-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1743877497,
-        "narHash": "sha256-Fit4M+BfxNbUAK0RBJAy5G9DR8LqZR7UEVsN+92Heho=",
-        "owner": "AndreM222",
-        "repo": "copilot-lualine",
-        "rev": "6bc29ba1fcf8f0f9ba1f0eacec2f178d9be49333",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AndreM222",
-        "repo": "copilot-lualine",
-        "type": "github"
-      }
-    },
     "fidget-nvim": {
       "flake": false,
       "locked": {
@@ -324,22 +276,6 @@
       "original": {
         "owner": "lewis6991",
         "repo": "gitsigns.nvim",
-        "type": "github"
-      }
-    },
-    "gp-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1744146845,
-        "narHash": "sha256-obYQyy1aHQXdf23NRNe8EPleP8KtKSisijgAQ7Ckkzo=",
-        "owner": "Robitx",
-        "repo": "gp.nvim",
-        "rev": "b32327fe4ee65d24acbab0f645747c113eb935c0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Robitx",
-        "repo": "gp.nvim",
         "type": "github"
       }
     },
@@ -686,13 +622,9 @@
         "cmp-path": "cmp-path",
         "cmp_luasnip": "cmp_luasnip",
         "comment-nvim": "comment-nvim",
-        "copilot-cmp": "copilot-cmp",
-        "copilot-lua": "copilot-lua",
-        "copilot-lualine-nvim": "copilot-lualine-nvim",
         "fidget-nvim": "fidget-nvim",
         "fugitive": "fugitive",
         "gitsigns-nvim": "gitsigns-nvim",
-        "gp-nvim": "gp-nvim",
         "indent-blankline-nvim": "indent-blankline-nvim",
         "lsp_signature-nvim": "lsp_signature-nvim",
         "lspkind-nvim": "lspkind-nvim",

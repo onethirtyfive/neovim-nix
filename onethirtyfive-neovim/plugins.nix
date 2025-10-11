@@ -107,9 +107,7 @@ in (with vimPlugins; [
   vim-sleuth
 
   # lsp: chatbot
-  gp
-  copilot-lua
-  copilot-lualine-nvim
+  # TODO: add claude-code
 
   # cmp
   nvim-cmp
@@ -119,7 +117,6 @@ in (with vimPlugins; [
   cmp-nvim-lsp
   cmp-path
   cmp_luasnip
-  copilot-cmp
 
   # debugging
   nvim-dap

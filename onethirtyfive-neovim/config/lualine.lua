@@ -35,7 +35,7 @@ require('lualine').setup {
       },
       'progress',
     },
-    lualine_x = { 'copilot' ,'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = {}
   },
   inactive_sections = {

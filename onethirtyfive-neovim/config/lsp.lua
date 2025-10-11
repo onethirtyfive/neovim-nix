@@ -105,8 +105,3 @@ configure_lsp('hls')
 --   },
 -- })
 
-require("lspkind").init({
-  symbol_map = {
-    Copilot = "",
-  },
-})

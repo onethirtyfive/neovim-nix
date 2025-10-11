@@ -21,8 +21,6 @@ let
           ./config/treesitter.lua
           ./config/lsp.lua
           ./config/cmp.lua
-          ./config/gp.lua
-          ./config/copilot.lua
           ./config/projects.lua
           ./config/tmux.lua
           ./config/telescope.lua
@@ -40,7 +38,6 @@ in pkgs.writeShellApplication {
     nil
     nmap
     nodejs
-    (sox.override { enableLame = true; })
     ripgrep
     taplo
     # terraform
