@@ -34,7 +34,7 @@ in pkgs.writeShellApplication {
 
   runtimeInputs = with pkgs; [
     fswatch
-    marksman
+    # marksman
     nil
     nmap
     nodejs
@@ -45,7 +45,7 @@ in pkgs.writeShellApplication {
     texlab
     ruby
   ]
-    ++ (with pkgs.haskellPackages; [ fast-tags ghci-dap haskell-debug-adapter ])
+    ++ (with pkgs.haskellPackages; [ fast-tags ])
     ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ])
     # TODO: set up python with packages?:
     ++ (with pkgs.python3Packages; [

@@ -65,29 +65,39 @@ local on_attach = function(_, bufnr)
   nmap('<leader>k', vim.lsp.buf.signature_help, '[k] signature documentation')
 end
 
-local lspconfig = require('lspconfig')
-local lsp_defaults = lspconfig.util.default_config
-
-lsp_defaults.capabilities = vim.tbl_deep_extend(
+local capabilities = vim.tbl_deep_extend(
   'force',
-  lsp_defaults.capabilities,
+  vim.lsp.protocol.make_client_capabilities(),
   require('cmp_nvim_lsp').default_capabilities()
 )
 
--- add a few misc capabilities (source?)
-lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
-lsp_defaults.capabilities.textDocument.completion.completionItem.resolveSupport = {
+-- Add your custom capabilities
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = { "documentation", "detail", "additionalTextEdits" },
 }
 
+-- Then use it in each server config
+vim.lsp.config.lua_ls = {
+  capabilities = capabilities,
+  -- other settings...
+}
+
+vim.lsp.config.hls = {
+  capabilities = capabilities,
+  -- other settings...
+}
+
 function configure_lsp(server_name)
-  lspconfig[server_name].setup { on_attach = on_attach, }
+  vim.lsp.config[server_name] = {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 end
 
 configure_lsp('clangd')
 configure_lsp('html')
 configure_lsp('cssls')
-configure_lsp('marksman')
 configure_lsp('nil_ls')
 configure_lsp('pylsp')
 configure_lsp('ruff')
