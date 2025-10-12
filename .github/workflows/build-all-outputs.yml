@@ -6,13 +6,13 @@ jobs:
   matrix-from-flake:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@v27
+    - uses: actions/checkout@v5
+    - uses: cachix/install-nix-action@v31
       with:
         extra_nix_config: |
           accept-flake-config = true
     - name: Use onethirtyfive binary cache
-      uses: cachix/cachix-action@v15
+      uses: cachix/cachix-action@v16
       with:
         name: onethirtyfive
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
@@ -54,14 +54,14 @@ jobs:
     name: "${{ matrix.jobName }}"
     steps:
     - name: Checkout source code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Install Nix
-      uses: cachix/install-nix-action@v27
+      uses: cachix/install-nix-action@v31
       with:
         extra_nix_config: |
           accept-flake-config = true
     - name: Use onethirtyfive binary cache
-      uses: cachix/cachix-action@v15
+      uses: cachix/cachix-action@v16
       with:
         name: onethirtyfive
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
