@@ -98,6 +98,7 @@ end
 configure_lsp('clangd')
 configure_lsp('html')
 configure_lsp('cssls')
+-- configure_lsp('marksman')
 configure_lsp('nil_ls')
 configure_lsp('pylsp')
 configure_lsp('ruff')
@@ -106,6 +107,23 @@ configure_lsp('ts_ls')
 configure_lsp('taplo')
 configure_lsp('jsonls')
 configure_lsp('hls')
+configure_lsp('ty')
+
+vim.lsp.enable({
+  'clangd',
+  'html',
+  'cssls',
+  -- 'marksman',
+  'nil_ls',
+  'pylsp',
+  'ruff',
+  'texlab',
+  'ts_ls',
+  'taplo',
+  'jsonls',
+  'hls',
+  'ty'
+})
 
 -- lspconfig["ruby_lsp"].setup({
 --   on_attach = on_attach,

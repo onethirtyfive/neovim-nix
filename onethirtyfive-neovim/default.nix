@@ -40,6 +40,7 @@ in pkgs.writeShellApplication {
     nodejs
     ripgrep
     taplo
+    ty
     # terraform
     # terraform-ls
     texlab
@@ -50,7 +51,6 @@ in pkgs.writeShellApplication {
     ++ (with pkgs.python3Packages; [
          pynvim
          python-lsp-server
-         pylsp-mypy
          python-pam
          ruff
          typing-extensions
