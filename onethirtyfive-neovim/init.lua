@@ -32,12 +32,23 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.diagnostic.config({
-  virtual_text = false,
-  severity_sort = true,
   float = {
-    border = 'rounded',
-    source = 'always',
+    border = "rounded",
+    source = "always"
   },
+  jump = {
+    wrap = true
+  },
+  severity_sort = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  virtual_lines = false,
+  virtual_text = {
+    enabled = true,
+    spacing = 4,
+    prefix = '●',
+  }
 })
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
