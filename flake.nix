@@ -59,7 +59,7 @@
     telescope-fzf-native-nvim.flake = false;
     telescope-live-grep-args-nvim.url = "github:nvim-telescope/telescope-live-grep-args.nvim";
     telescope-live-grep-args-nvim.flake = false;
-    telescope-nvim.url = "github:nvim-telescope/telescope.nvim";
+    telescope-nvim.url = "github:nvim-telescope/telescope.nvim/v0.1.9";
     telescope-nvim.flake = false;
     vim-sleuth.url = "github:tpope/vim-sleuth";
     vim-sleuth.flake = false;
@@ -114,7 +114,7 @@
         overlays = [
           neovim-nightly-overlay.overlays.default
           (prev: final: {
-            neovim = neovim-nightly-overlay.packages.${prev.system}.default;
+            neovim = neovim-nightly-overlay.packages.${prev.stdenv.hostPlatform.system}.default;
 
             vimPlugins = final.vimPlugins // {
               cmp_luasnip = final.vimPlugins.cmp_luasnip.overrideAttrs (prev: prev // {
@@ -223,7 +223,7 @@
 
     overlays = {
       default = prev: final: {
-        onethirtyfive.neovim = self.packages.${prev.system}.default;
+        onethirtyfive.neovim = self.packages.${prev.stdenv.hostPlatform.system}.default;
       };
     };
 
