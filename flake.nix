@@ -156,11 +156,9 @@
               lspkind-nvim = final.vimPlugins.lspkind-nvim.overrideAttrs (prev: prev // {
                 src = lspkind-nvim;
               });
-              lualine-nvim = final.vimUtils.buildVimPlugin {
-                pname = "lualine-nvim";
-                version = lualine-nvim.shortRev;
+              lualine-nvim = final.vimPlugins.lualine-nvim.overrideAttrs (prev: prev // {
                 src = lualine-nvim;
-              };
+              });
               luasnip = final.vimPlugins.luasnip.overrideAttrs (prev: prev // {
                 src = luasnip;
               });
