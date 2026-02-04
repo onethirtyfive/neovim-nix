@@ -25,7 +25,7 @@ in (with vimPlugins; [
   nightfox-nvim
 
   # lang
-  (nvim-treesitter.withPlugins (
+  (nvim-treesitter-main.withPlugins (
     plugins: (with plugins; [
       awk
       bash
@@ -73,7 +73,6 @@ in (with vimPlugins; [
       python
       readline
       regex
-      robots
       ruby
       rust
       scss

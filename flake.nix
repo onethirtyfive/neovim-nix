@@ -45,8 +45,9 @@
     nvim-lspconfig.flake = false;
     nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
     nvim-tree-lua.flake = false;
-    nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter";
-    nvim-treesitter.flake = false;
+    # nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter";
+    # nvim-treesitter.flake = false;
+    nvim-treesitter-main.url = "github:iofq/nvim-treesitter-main";
     nvim-treesitter-textobjects.url = "github:nvim-treesitter/nvim-treesitter-textobjects";
     nvim-treesitter-textobjects.flake = false;
     nvim-ts-autotag.url = "github:windwp/nvim-ts-autotag";
@@ -92,7 +93,8 @@
     nvim-cmp,
     nvim-lspconfig,
     nvim-tree-lua,
-    nvim-treesitter,
+    # nvim-treesitter,
+    nvim-treesitter-main,
     nvim-treesitter-textobjects,
     nvim-ts-autotag,
     nvim-web-devicons,
@@ -113,6 +115,7 @@
       let
         overlays = [
           neovim-nightly-overlay.overlays.default
+          nvim-treesitter-main.overlays.default
           (prev: final: {
             neovim = neovim-nightly-overlay.packages.${prev.stdenv.hostPlatform.system}.default;
 
@@ -177,8 +180,11 @@
               nvim-cmp = final.vimPlugins.nvim-cmp.overrideAttrs (prev: prev // {
                 src = nvim-cmp;
               });
-              nvim-treesitter = final.vimPlugins.nvim-treesitter.overrideAttrs (prev: prev // {
-                src = nvim-treesitter;
+              # nvim-treesitter = final.vimPlugins.nvim-treesitter.overrideAttrs (prev: prev // {
+              #   src = nvim-treesitter;
+              # });
+              nvim-treesitter-main = final.vimPlugins.nvim-treesitter.overrideAttrs (prev: prev // {
+                src = nvim-treesitter-main;
               });
               nvim-ts-autotag = final.vimPlugins.nvim-ts-autotag.overrideAttrs (prev: prev // {
                 src = nvim-ts-autotag;
@@ -215,8 +221,14 @@
   in
   {
     nixConfig = {
-      extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg=";
-      extra-substituters = "https://nix-community.cachix.org https://onethirtyfive.cachix.org";
+      extra-substituters = [
+        "https://nix-community.cachix.org https://onethirtyfive.cachix.org"
+        "https://nvim-treesitter-main.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg="
+        "nvim-treesitter-main.cachix.org-1:cbwE6blfW5+BkXXyeAXoVSu1gliqPLHo2m98E4hWfZQ="
+      ];
     };
 
     githubActions = nix-github-actions.lib.mkGithubMatrix { checks = self.packages; };
