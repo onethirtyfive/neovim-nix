@@ -23,8 +23,8 @@
     comment-nvim.flake = false;
     fidget-nvim.url = "github:j-hui/fidget.nvim";
     fidget-nvim.flake = false;
-    fugitive.url = "github:tpope/vim-fugitive";
-    fugitive.flake = false;
+    vim-fugitive.url = "github:tpope/vim-fugitive";
+    vim-fugitive.flake = false;
     gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
     gitsigns-nvim.flake = false;
     indent-blankline-nvim.url = "github:lukas-reineke/indent-blankline.nvim";
@@ -82,7 +82,7 @@
     cmp-path,
     comment-nvim,
     fidget-nvim,
-    fugitive,
+    vim-fugitive,
     gitsigns-nvim,
     indent-blankline-nvim,
     lsp_signature-nvim,
@@ -144,8 +144,8 @@
               fidget-nvim = final.vimPlugins.fidget-nvim.overrideAttrs (prev: prev // {
                 src = fidget-nvim;
               });
-              fugitive = final.vimPlugins.fugitive.overrideAttrs (prev: prev // {
-                src = fugitive;
+              vim-fugitive = final.vimPlugins.vim-fugitive.overrideAttrs (prev: prev // {
+                src = vim-fugitive;
               });
               gitsigns-nvim = final.vimPlugins.gitsigns-nvim.overrideAttrs (prev: prev // {
                 src = gitsigns-nvim;

@@ -149,22 +149,6 @@
         "type": "github"
       }
     },
-    "fugitive": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752614839,
-        "narHash": "sha256-u39oObHCXk8uew5HyVdV1Z69Viilv3B7x1SUJxYXYLo=",
-        "owner": "tpope",
-        "repo": "vim-fugitive",
-        "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tpope",
-        "repo": "vim-fugitive",
-        "type": "github"
-      }
-    },
     "gitsigns-nvim": {
       "flake": false,
       "locked": {
@@ -553,7 +537,6 @@
         "cmp_luasnip": "cmp_luasnip",
         "comment-nvim": "comment-nvim",
         "fidget-nvim": "fidget-nvim",
-        "fugitive": "fugitive",
         "gitsigns-nvim": "gitsigns-nvim",
         "indent-blankline-nvim": "indent-blankline-nvim",
         "lsp_signature-nvim": "lsp_signature-nvim",
@@ -578,6 +561,7 @@
         "telescope-fzf-native-nvim": "telescope-fzf-native-nvim",
         "telescope-live-grep-args-nvim": "telescope-live-grep-args-nvim",
         "telescope-nvim": "telescope-nvim",
+        "vim-fugitive": "vim-fugitive",
         "vim-sleuth": "vim-sleuth",
         "vim-tmux-navigator": "vim-tmux-navigator",
         "which-key-nvim": "which-key-nvim"
@@ -629,6 +613,22 @@
         "owner": "nvim-telescope",
         "ref": "v0.1.9",
         "repo": "telescope.nvim",
+        "type": "github"
+      }
+    },
+    "vim-fugitive": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752614839,
+        "narHash": "sha256-u39oObHCXk8uew5HyVdV1Z69Viilv3B7x1SUJxYXYLo=",
+        "owner": "tpope",
+        "repo": "vim-fugitive",
+        "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpope",
+        "repo": "vim-fugitive",
         "type": "github"
       }
     },
