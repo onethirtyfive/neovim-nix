@@ -490,6 +490,7 @@
         "telescope-fzf-native-nvim": "telescope-fzf-native-nvim",
         "telescope-live-grep-args-nvim": "telescope-live-grep-args-nvim",
         "telescope-nvim": "telescope-nvim",
+        "tree-sitter-asciidoc": "tree-sitter-asciidoc",
         "vim-fugitive": "vim-fugitive",
         "vim-sleuth": "vim-sleuth",
         "vim-tmux-navigator": "vim-tmux-navigator",
@@ -542,6 +543,22 @@
         "owner": "nvim-telescope",
         "ref": "v0.1.9",
         "repo": "telescope.nvim",
+        "type": "github"
+      }
+    },
+    "tree-sitter-asciidoc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777267340,
+        "narHash": "sha256-85E13mJUGuuWrRIfhYfYXi+okRcv4Q41Mc6POR4w3oI=",
+        "owner": "cathaysia",
+        "repo": "tree-sitter-asciidoc",
+        "rev": "dd042737a453599bc851b7338d9222d3bd35df53",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cathaysia",
+        "repo": "tree-sitter-asciidoc",
         "type": "github"
       }
     },

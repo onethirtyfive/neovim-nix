@@ -88,6 +88,7 @@ in (with vimPlugins; [
       zig
     ])
   ))
+  nvim-treesitter-asciidoc
   nvim-treesitter-textobjects
   nvim-ts-autotag
 

@@ -43,6 +43,8 @@
     nvim-cmp.flake = false;
     nvim-lspconfig.url = "github:neovim/nvim-lspconfig";
     nvim-lspconfig.flake = false;
+    tree-sitter-asciidoc.url = "github:cathaysia/tree-sitter-asciidoc";
+    tree-sitter-asciidoc.flake = false;
     nvim-tree-lua.url = "github:nvim-tree/nvim-tree.lua";
     nvim-tree-lua.flake = false;
     nvim-treesitter-textobjects.url = "github:nvim-treesitter/nvim-treesitter-textobjects";
@@ -89,6 +91,7 @@
     nightfox-nvim,
     nvim-cmp,
     nvim-lspconfig,
+    tree-sitter-asciidoc,
     nvim-tree-lua,
     nvim-treesitter-textobjects,
     nvim-ts-autotag,
@@ -164,6 +167,13 @@
               });
               nvim-lspconfig = final.vimPlugins.nvim-lspconfig.overrideAttrs (prev: prev // {
                 src = nvim-lspconfig;
+              });
+              nvim-treesitter-asciidoc = final.neovimUtils.grammarToPlugin (final.tree-sitter.buildGrammar {
+                language = "asciidoc";
+                version = "unstable";
+                src = tree-sitter-asciidoc;
+                location = "tree-sitter-asciidoc";
+                meta.homepage = "https://github.com/cathaysia/tree-sitter-asciidoc";
               });
               nvim-tree-lua = final.vimPlugins.nvim-tree-lua.overrideAttrs (prev: prev // {
                 src = nvim-tree-lua;

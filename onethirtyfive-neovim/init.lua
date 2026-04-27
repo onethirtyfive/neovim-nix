@@ -107,6 +107,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "asciidoc",
+  callback = function(args)
+    vim.bo[args.buf].syntax = ""
+    pcall(vim.treesitter.start, args.buf, "asciidoc")
+  end,
+})
+
 -- Miscellaneous plugin setup (don't warrant own file)
 
 require("nvim-tree").setup({
