@@ -50,7 +50,6 @@ in pkgs.writeShellApplication {
     # TODO: set up python with packages?:
     ++ (with pkgs.python3Packages; [
          pynvim
-         python-lsp-server
          python-pam
          ruff
          typing-extensions
@@ -75,4 +74,3 @@ in pkgs.writeShellApplication {
     ${wrapped}/bin/nvim "$@"
   '';
 }
-

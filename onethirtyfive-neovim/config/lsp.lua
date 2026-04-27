@@ -100,7 +100,6 @@ configure_lsp('html')
 configure_lsp('cssls')
 -- configure_lsp('marksman')
 configure_lsp('nil_ls')
-configure_lsp('pylsp')
 configure_lsp('ruff')
 configure_lsp('texlab')
 configure_lsp('ts_ls')
@@ -115,7 +114,6 @@ vim.lsp.enable({
   'cssls',
   -- 'marksman',
   'nil_ls',
-  'pylsp',
   'ruff',
   'texlab',
   'ts_ls',
@@ -132,4 +130,3 @@ vim.lsp.enable({
 --     -- linters = { 'standard' },
 --   },
 -- })
-
