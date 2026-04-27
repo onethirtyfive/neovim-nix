@@ -1,17 +1,9 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) neovimUtils;
-  inherit (neovimUtils) makeNeovimConfig;
-
-  config = makeNeovimConfig {
+  wrapped = pkgs.wrapNeovimUnstable pkgs.neovim {
     withNodeJs = true;
-
     plugins = import ./plugins.nix { inherit pkgs; };
-
     vimAlias = true;
-  };
-
-  wrapped = pkgs.wrapNeovimUnstable pkgs.neovim (config // {
     luaRcContent =
       let
         inherit (builtins) concatStringsSep readFile map;
@@ -28,7 +20,7 @@ let
           ./config/lualine.lua
         ];
       in concatStringsSep "\n" (map readFile sources);
-  });
+  };
 in pkgs.writeShellApplication {
   name = "nvim";
 
@@ -44,9 +36,10 @@ in pkgs.writeShellApplication {
     # terraform
     # terraform-ls
     texlab
+    typescript-language-server
+    vscode-langservers-extracted
     ruby
   ]
-    ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ])
     # TODO: set up python with packages?:
     ++ (with pkgs.python3Packages; [
          pynvim

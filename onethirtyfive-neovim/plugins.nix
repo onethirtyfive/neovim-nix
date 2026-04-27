@@ -9,7 +9,7 @@ in (with vimPlugins; [
   project-nvim
 
   # scm
-  fugitive # less used
+  vim-fugitive # less used
   gitsigns-nvim
 
   # chrome
@@ -25,7 +25,7 @@ in (with vimPlugins; [
   nightfox-nvim
 
   # lang
-  (nvim-treesitter-main.withPlugins (
+  (nvim-treesitter.withPlugins (
     plugins: (with plugins; [
       awk
       bash
