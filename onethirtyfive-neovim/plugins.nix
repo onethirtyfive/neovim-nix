@@ -57,6 +57,7 @@ in (with vimPlugins; [
       jq
       jsdoc
       json
+      kotlin
       llvm
       lua
       luadoc

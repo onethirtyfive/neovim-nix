@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, kotlin-lsp, ... }:
 let
   wrapped = pkgs.wrapNeovimUnstable pkgs.neovim {
     withNodeJs = true;
@@ -26,6 +26,7 @@ in pkgs.writeShellApplication {
 
   runtimeInputs = with pkgs; [
     fswatch
+    kotlin-lsp
     # marksman
     nil
     nmap

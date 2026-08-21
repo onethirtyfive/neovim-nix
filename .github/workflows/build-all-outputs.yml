@@ -25,6 +25,7 @@ jobs:
         matrix=$(echo "$raw_matrix" | jq -c \
           --argjson runnerSelectors '{
             "x86_64-linux": "ubuntu-latest",
+            "aarch64-linux": "ubuntu-24.04-arm",
             "aarch64-darwin": "macos-latest"
           }' '{
             include: (
@@ -68,4 +69,3 @@ jobs:
     - name: Build
       run: |
         nix build '.#${{ matrix.attr }}' --keep-going --accept-flake-config -L
-

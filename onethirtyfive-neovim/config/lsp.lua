@@ -107,6 +107,7 @@ configure_lsp('taplo')
 configure_lsp('jsonls')
 configure_lsp('hls')
 configure_lsp('ty')
+configure_lsp('kotlin_lsp')
 
 vim.lsp.enable({
   'clangd',
@@ -120,7 +121,8 @@ vim.lsp.enable({
   'taplo',
   'jsonls',
   'hls',
-  'ty'
+  'ty',
+  'kotlin_lsp'
 })
 
 -- lspconfig["ruby_lsp"].setup({

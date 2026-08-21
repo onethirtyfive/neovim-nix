@@ -105,7 +105,7 @@
     which-key-nvim
   }:
   let
-    systems = [ "x86_64-linux" "aarch64-darwin" ];
+    systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
     forEachSystem = nixpkgs.lib.genAttrs systems;
 
     mkPkgs =
@@ -215,7 +215,10 @@
             };
           })
         ];
-      in import nixpkgs { inherit system overlays; };
+      in import nixpkgs {
+        inherit system overlays;
+        config.allowUnfreePredicate = pkg: nixpkgs.lib.getName pkg == "kotlin-lsp";
+      };
   in
   {
     nixConfig = {
@@ -227,7 +230,9 @@
       ];
     };
 
-    githubActions = nix-github-actions.lib.mkGithubMatrix { checks = self.packages; };
+    githubActions = nix-github-actions.lib.mkGithubMatrix {
+      checks = nixpkgs.lib.mapAttrs (_: packages: { inherit (packages) default; }) self.packages;
+    };
 
     overlays = {
       default = prev: final: {
@@ -239,8 +244,10 @@
       system:
       let
         pkgs = mkPkgs system;
+        kotlin-lsp = pkgs.callPackage ./packages/kotlin-lsp.nix { };
       in {
-        default = import ./onethirtyfive-neovim { inherit pkgs; };
+        inherit kotlin-lsp;
+        default = import ./onethirtyfive-neovim { inherit pkgs kotlin-lsp; };
       }
     );
 
