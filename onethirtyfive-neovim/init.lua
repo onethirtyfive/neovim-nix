@@ -4,6 +4,13 @@
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+-- Bridge plugins that still use the pre-0.15 name to the supported API.
+if vim.nonnil then
+  vim.F = vim.F or {}
+  vim.F.if_nil = vim.nonnil
+end
+
 vim.g.vim_deprecation_warning = false
 vim.o.hlsearch = false
 vim.wo.number = true

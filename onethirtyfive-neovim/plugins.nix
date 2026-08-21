@@ -37,8 +37,8 @@ in (with vimPlugins; [
       dockerfile
       diff
       elixir
-      git-config
-      git-rebase
+      git_config
+      git_rebase
       gitattributes
       gitcommit
       gitignore
@@ -62,7 +62,7 @@ in (with vimPlugins; [
       luadoc
       make
       markdown
-      markdown-inline
+      markdown_inline
       meson
       nginx
       nix
@@ -76,15 +76,14 @@ in (with vimPlugins; [
       ruby
       rust
       scss
-      ssh-config
+      ssh_config
       sql
       swift
       terraform
-      tmux
       toml
-      tree-sitter-tsx
+      tsx
       typescript
-      tree-sitter-yaml
+      yaml
       zig
     ])
   ))
@@ -105,9 +104,6 @@ in (with vimPlugins; [
   comment-nvim
   indent-blankline-nvim
   vim-sleuth
-
-  # lsp: chatbot
-  # TODO: add claude-code
 
   # cmp
   nvim-cmp

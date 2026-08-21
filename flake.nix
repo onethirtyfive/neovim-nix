@@ -59,7 +59,7 @@
     telescope-fzf-native-nvim.flake = false;
     telescope-live-grep-args-nvim.url = "github:nvim-telescope/telescope-live-grep-args.nvim";
     telescope-live-grep-args-nvim.flake = false;
-    telescope-nvim.url = "github:nvim-telescope/telescope.nvim/v0.1.9";
+    telescope-nvim.url = "github:nvim-telescope/telescope.nvim";
     telescope-nvim.flake = false;
     vim-sleuth.url = "github:tpope/vim-sleuth";
     vim-sleuth.flake = false;
