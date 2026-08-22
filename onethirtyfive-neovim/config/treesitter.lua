@@ -64,4 +64,11 @@ require('nvim-treesitter').setup {
   },
 }
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'kotlin',
+  callback = function()
+    vim.bo.indentexpr = 'GetKotlinIndent()'
+  end,
+})
+
 require('nvim-ts-autotag').setup()
