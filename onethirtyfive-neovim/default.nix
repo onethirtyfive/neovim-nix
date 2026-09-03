@@ -68,6 +68,19 @@ in pkgs.writeShellApplication {
        ];
 
   text = ''
-    ${wrapped}/bin/nvim "$@"
+    ${pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''
+      if [[ -z "''${LLDB_DEBUGSERVER_PATH:-}" ]]; then
+        xcode_debugserver="/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/Resources/debugserver"
+        command_line_tools_debugserver="/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Resources/debugserver"
+
+        if [[ -x "$xcode_debugserver" ]]; then
+          export LLDB_DEBUGSERVER_PATH="$xcode_debugserver"
+        elif [[ -x "$command_line_tools_debugserver" ]]; then
+          export LLDB_DEBUGSERVER_PATH="$command_line_tools_debugserver"
+        fi
+      fi
+    ''}
+
+    exec ${wrapped}/bin/nvim "$@"
   '';
 }
