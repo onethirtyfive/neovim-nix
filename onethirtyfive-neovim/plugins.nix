@@ -91,6 +91,7 @@ in (with vimPlugins; [
   nvim-treesitter-asciidoc
   nvim-treesitter-textobjects
   nvim-ts-autotag
+  crates-nvim
 
   # lsp: meta
   nvim-lspconfig
@@ -117,4 +118,6 @@ in (with vimPlugins; [
 
   # debugging
   nvim-dap
+  nvim-dap-view
+  rustaceanvim
 ])

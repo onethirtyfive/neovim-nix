@@ -25,6 +25,7 @@ in pkgs.writeShellApplication {
   name = "nvim";
 
   runtimeInputs = with pkgs; [
+    curl
     fswatch
     kotlin-lsp
     # marksman
@@ -32,6 +33,8 @@ in pkgs.writeShellApplication {
     nmap
     nodejs
     ripgrep
+    # The Rust toolchain and rust-analyzer come from the project's environment.
+    vscode-extensions.vadimcn.vscode-lldb.adapter
     taplo
     ty
     # terraform

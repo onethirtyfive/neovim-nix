@@ -146,6 +146,27 @@ require("nvim-tree").setup({
 require('fidget').setup{}
 require('nvim-web-devicons').setup{}
 require('Comment').setup{}
+require('crates').setup({
+  on_attach = function(bufnr)
+    local crates = require('crates')
+    local function map(mode, keys, action, desc)
+      vim.keymap.set(mode, keys, action, {
+        buffer = bufnr,
+        desc = 'Crates: ' .. desc,
+        silent = true,
+      })
+    end
+
+    map('n', 'K', crates.show_crate_popup, 'Show crate information')
+    map('n', '<leader>cv', crates.show_versions_popup, 'Show [v]ersions')
+    map('n', '<leader>cf', crates.show_features_popup, 'Show [f]eatures')
+    map('n', '<leader>cd', crates.show_dependencies_popup, 'Show [d]ependencies')
+    map('n', '<leader>cu', crates.update_crate, '[u]pdate crate')
+    map('v', '<leader>cu', crates.update_crates, '[u]pdate selected crates')
+    map('n', '<leader>cU', crates.upgrade_crate, '[U]pgrade crate')
+    map('v', '<leader>cU', crates.upgrade_crates, '[U]pgrade selected crates')
+  end,
+})
 require('gitsigns').setup{
   signs = {
     add = { text = '+' },

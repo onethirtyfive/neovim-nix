@@ -1,6 +1,8 @@
 require "math"
 
-local on_attach = function(_, bufnr)
+local rust_format_group = vim.api.nvim_create_augroup('RustFormatOnSave', { clear = true })
+
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -63,6 +65,49 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
   nmap('<leader>k', vim.lsp.buf.signature_help, '[k] signature documentation')
+
+  if client.name == 'rust-analyzer' and vim.bo[bufnr].filetype == 'rust' then
+    nmap('K', function()
+      vim.cmd.RustLsp('hover actions')
+    end, '[r]ust hover actions')
+    nmap('<leader>ca', function()
+      vim.cmd.RustLsp('codeAction')
+    end, '[r]ust grouped [c]ode [a]ctions')
+    nmap('<leader>rr', function()
+      vim.cmd.RustLsp('runnables')
+    end, '[r]ust [r]unnables')
+    nmap('<leader>rt', function()
+      vim.cmd.RustLsp('testables')
+    end, '[r]ust [t]estables')
+    nmap('<leader>rm', function()
+      vim.cmd.RustLsp('expandMacro')
+    end, '[r]ust expand [m]acro')
+    nmap('<leader>rd', function()
+      vim.cmd.RustLsp('debuggables')
+    end, '[r]ust [d]ebuggables')
+
+    if client:supports_method('textDocument/inlayHint') then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+
+    if client:supports_method('textDocument/formatting') then
+      vim.api.nvim_clear_autocmds({ group = rust_format_group, buffer = bufnr })
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = rust_format_group,
+        buffer = bufnr,
+        desc = 'Format Rust with the project rustfmt before saving',
+        callback = function()
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+            timeout_ms = 3000,
+            filter = function(format_client)
+              return format_client.id == client.id
+            end,
+          })
+        end,
+      })
+    end
+  end
 end
 
 local capabilities = vim.tbl_deep_extend(
@@ -76,6 +121,26 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = { "documentation", "detail", "additionalTextEdits" },
 }
+
+-- Rustaceanvim owns the Rust LSP client and discovers codelldb on PATH.
+vim.g.rustaceanvim = {
+  server = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
+}
+
+local dap = require('dap')
+require('dap-view').setup({ auto_toggle = true })
+
+vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = '[d]ebug: Toggle [b]reakpoint' })
+vim.keymap.set('n', '<leader>dc', dap.continue, { desc = '[d]ebug: Start/[c]ontinue' })
+vim.keymap.set('n', '<leader>di', dap.step_into, { desc = '[d]ebug: Step [i]nto' })
+vim.keymap.set('n', '<leader>dn', dap.step_over, { desc = '[d]ebug: Step over ([n]ext)' })
+vim.keymap.set('n', '<leader>do', dap.step_out, { desc = '[d]ebug: Step [o]ut' })
+vim.keymap.set('n', '<leader>dt', dap.terminate, { desc = '[d]ebug: [t]erminate' })
+vim.keymap.set('n', '<leader>dr', dap.repl.open, { desc = '[d]ebug: Open [r]EPL' })
+vim.keymap.set('n', '<leader>dv', '<cmd>DapViewToggle<cr>', { desc = '[d]ebug: Toggle [v]iew' })
 
 -- Then use it in each server config
 vim.lsp.config.lua_ls = {

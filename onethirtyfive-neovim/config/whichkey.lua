@@ -11,3 +11,6 @@ wk.setup{
   },
 }
 
+wk.add({
+  { '<leader>d', group = 'debug' },
+})
