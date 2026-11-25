@@ -11,7 +11,7 @@ if vim.nonnil then
   vim.F.if_nil = vim.nonnil
 end
 
-vim.g.vim_deprecation_warning = false
+-- vim.g.vim_deprecation_warning = false
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = 'a'
