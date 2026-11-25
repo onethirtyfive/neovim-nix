@@ -164,6 +164,7 @@
               });
               nightfox-nvim = final.vimPlugins.nightfox-nvim.overrideAttrs (prev: prev // {
                 src = nightfox-nvim;
+                nvimSkipModules = [ "nightfox.lib.vim.init" ];
               });
               nvim-lspconfig = final.vimPlugins.nvim-lspconfig.overrideAttrs (prev: prev // {
                 src = nvim-lspconfig;
