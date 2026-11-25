@@ -61,11 +61,10 @@ cmp.setup {
     },
   },
   sources = {
-    { name = 'nvim_lsp', group_index = 2 },
-    { name = 'luasnip', group_index = 2 },
-    { name = 'buffer', group_index = 3 },
-    { name = 'path' },
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer' },
+    { name = 'path' },
     { name = 'nvim_lsp_document_symbol' },
   },
   formatting = {
