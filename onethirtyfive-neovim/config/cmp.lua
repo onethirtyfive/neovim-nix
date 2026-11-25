@@ -66,7 +66,6 @@ cmp.setup {
     { name = 'buffer', group_index = 3 },
     { name = 'path' },
     { name = 'buffer' },
-    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp_document_symbol' },
   },
   formatting = {
