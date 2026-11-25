@@ -3,11 +3,16 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
+require('cmp_git').setup()
+
 cmp.setup {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  completion = {
+    completeopt = 'menu,menuone,noselect',
   },
   window = {
     completion = cmp.config.window.bordered(),
@@ -20,7 +25,7 @@ cmp.setup {
     },
     ["<Tab>"] = cmp.mapping(function(fallback)
       local has_words_before = function()
-        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+        if vim.bo[0].buftype == 'prompt' then return false end
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
       end
@@ -65,7 +70,6 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'nvim_lsp_document_symbol' },
   },
   formatting = {
     format = function(entry, vim_item)

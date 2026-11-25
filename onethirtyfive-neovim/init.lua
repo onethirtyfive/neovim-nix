@@ -22,7 +22,6 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.wo.signcolumn = 'yes' -- Keep signcolumn on by default
 vim.o.termguicolors = true -- rich terminal colors
-vim.o.completeopt = '' -- Turn builtin completion off in favor of nvim-cmp
 
 -- always re-read a file if it changed outside of Neovim
 vim.o.autoread = true

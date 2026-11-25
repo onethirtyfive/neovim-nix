@@ -155,12 +155,7 @@ vim.lsp.config.lua_ls = {
   -- other settings...
 }
 
-vim.lsp.config.hls = {
-  capabilities = capabilities,
-  -- other settings...
-}
-
-function configure_lsp(server_name)
+local function configure_lsp(server_name)
   vim.lsp.config[server_name] = {
     on_attach = on_attach,
     capabilities = capabilities
