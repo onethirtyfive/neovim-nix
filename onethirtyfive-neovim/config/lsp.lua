@@ -176,6 +176,52 @@ configure_lsp('hls')
 configure_lsp('ty')
 configure_lsp('kotlin_lsp')
 
+vim.lsp.config('ruby_lsp', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = function(dispatchers, config)
+    local root_dir = config.root_dir
+    local direnv = vim.fn.exepath('direnv')
+    local command = { 'ruby-lsp' }
+
+    if direnv ~= '' and root_dir then
+      command = { direnv, 'exec', root_dir, 'ruby-lsp' }
+    end
+
+    return vim.lsp.rpc.start(command, dispatchers, {
+      cwd = root_dir,
+    })
+  end,
+})
+
+vim.lsp.config('sorbet', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  -- Only attach in Sorbet projects. Using the directory marker keeps the
+  -- project root as the server cwd, so Sorbet can read sorbet/config.
+  root_markers = { 'sorbet' },
+  cmd = function(dispatchers, config)
+    local root_dir = config.root_dir
+    local command = { 'bundle', 'exec', 'srb', 'tc', '--lsp' }
+    local direnv = vim.fn.exepath('direnv')
+    local watchman = vim.fn.exepath('watchman')
+
+    -- direnv replaces PATH with the project's environment. Pass Neovim's
+    -- Watchman path explicitly so Sorbet can still find the bundled binary.
+    if watchman ~= '' then
+      table.insert(command, '--watchman-path=' .. watchman)
+    end
+
+    if direnv ~= '' and root_dir then
+      command = { direnv, 'exec', root_dir, unpack(command) }
+    end
+
+    return vim.lsp.rpc.start(command, dispatchers, {
+      cwd = root_dir,
+    })
+  end,
+})
+
 vim.lsp.enable({
   'clangd',
   'html',
@@ -189,13 +235,7 @@ vim.lsp.enable({
   'jsonls',
   'hls',
   'ty',
-  'kotlin_lsp'
+  'kotlin_lsp',
+  'ruby_lsp',
+  'sorbet',
 })
-
--- lspconfig["ruby_lsp"].setup({
---   on_attach = on_attach,
---   init_options = {
---     -- formatter = 'standard',
---     -- linters = { 'standard' },
---   },
--- })

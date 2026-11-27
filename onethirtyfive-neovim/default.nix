@@ -26,6 +26,7 @@ in pkgs.writeShellApplication {
 
   runtimeInputs = with pkgs; [
     curl
+    direnv
     fswatch
     kotlin-lsp
     # marksman
@@ -37,12 +38,12 @@ in pkgs.writeShellApplication {
     vscode-extensions.vadimcn.vscode-lldb.adapter
     taplo
     ty
+    watchman
     # terraform
     # terraform-ls
     texlab
     typescript-language-server
     vscode-langservers-extracted
-    ruby
   ]
     # TODO: set up python with packages?:
     ++ (with pkgs.python3Packages; [
@@ -50,23 +51,7 @@ in pkgs.writeShellApplication {
          python-pam
          ruff
          typing-extensions
-       ])
-    ++ [
-         # (
-         #  let
-         #    debug = pkgs.buildRubyGem {
-         #      pname = "debug";
-         #      gemName = "debug";
-         #      type = "gem";
-         #      version = "1.10.0";
-         #
-         #      source.sha256 = null;
-         #    };
-         #  in
-         #    pkgs.ruby.withPackages (pkgs: with pkgs; [ ruby-lsp language_server-protocol debug ])
-         # )
-       ];
-
+       ]);
   text = ''
     ${pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''
       if [[ -z "''${LLDB_DEBUGSERVER_PATH:-}" ]]; then
